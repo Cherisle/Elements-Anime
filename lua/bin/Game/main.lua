@@ -11,15 +11,24 @@ function love.load()
 	buttons[2] = button:new(love.graphics.getWidth()*0.5 - 90,love.graphics.getHeight()*0.5,180,80,"Settings")
 	buttons[3] = button:new(love.graphics.getWidth()*0.5 - 90,love.graphics.getHeight()*0.7,180,80,"Quit Game")
 	background = love.graphics.newImage("NagiAsuBG.jpg")
-	--print(love.graphics.getWidth())
-	--print(love.graphics.getHeight())
+	TileW, TileH = 33,33
+	Tileset = love.graphics.newImage("Elements.jpg")
+	local tilesetW, tilesetH = Tileset:getWidth(), Tileset:getHeight()
+	Quads = 
+	{
+		love.graphics.newQuad(199, 11,TileW, TileH, tilesetW, tilesetH), -- 1 = Earth Glow
+		love.graphics.newQuad(32,  0, TileW, TileH, tilesetW, tilesetH), -- 2 = box
+		love.graphics.newQuad(0,  32, TileW, TileH, tilesetW, tilesetH), -- 3 = flowers
+		love.graphics.newQuad(32, 32, TileW, TileH, tilesetW, tilesetH)  -- 4 = boxtop
+	}
 end
 
 function love.draw() 
-	love.graphics.draw(background,0,0)
+	--love.graphics.draw(background,0,0)
 	buttons[1]:draw(buttons[1])
 	buttons[2]:draw(buttons[2])
 	buttons[3]:draw(buttons[3])
+	--love.graphics.draw(Tileset, Quads[1], 100, 100)
 end
 
 function love.update()
