@@ -29,7 +29,7 @@ function s.load()
 	-- Amtrash removed as a font choice
 	-- PhoneStreak removed as a font choice
 	
-	music = love.audio.newSource("We Go Back.mp3") -- if "static" is omitted, LÖVE will stream the file from disk, good for longer music tracks
+	music = love.audio.newSource("Beat Haven.mp3") -- if "static" is omitted, LÖVE will stream the file from disk, good for longer music tracks
 	music:play()
 end
 
