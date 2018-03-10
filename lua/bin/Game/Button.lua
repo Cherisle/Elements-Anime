@@ -24,6 +24,7 @@ function Button:new(x,y,w,h,label) -- Think of this as constructor
 	self.pos = Vector2:new(x or 0, y or 0)
 	self.w = w
 	self.h = h
+	print(self.h)
 	self.label = label
 	
 	--Button Colors
