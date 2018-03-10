@@ -29,7 +29,7 @@ function Button:new(x,y,w,h,label) -- Think of this as constructor
 	
 	--Button Colors
 	self.normal = color(119,221,218,192)
-	self.highlight = color(128,32,32,255)
+	self.highlight = color(169,169,169,255)
 	self.pressed = color(255,32,32,255)
 	self.disabled = gray(128,128)
 	return self
