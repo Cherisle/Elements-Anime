@@ -12,15 +12,17 @@ function s.load()
 	buttons[2] = button:new(love.graphics.getWidth()*0.5 - 90,love.graphics.getHeight()*0.5,180,80,"Settings")
 	buttons[3] = button:new(love.graphics.getWidth()*0.5 - 90,love.graphics.getHeight()*0.7,180,80,"Quit Game")
 	
-	TileW, TileH = 33,33
-	Tileset = love.graphics.newImage("Elements.jpg")
+	TileW, TileH = 300,300
+	Tileset = love.graphics.newImage("Elements FWTELD.png")
 	local tilesetW, tilesetH = Tileset:getWidth(), Tileset:getHeight()
 	Quads = 
 	{
-		love.graphics.newQuad(199, 11,TileW, TileH, tilesetW, tilesetH), -- 1 = Earth Glow
-		love.graphics.newQuad(32,  0, TileW, TileH, tilesetW, tilesetH), -- 2 = box
-		love.graphics.newQuad(0,  32, TileW, TileH, tilesetW, tilesetH), -- 3 = flowers
-		love.graphics.newQuad(32, 32, TileW, TileH, tilesetW, tilesetH)  -- 4 = boxtop
+		love.graphics.newQuad(0, 0, TileW, TileH, tilesetW, tilesetH), -- 1 = Fire Orb
+		love.graphics.newQuad(300, 0, TileW, TileH, tilesetW, tilesetH), -- 2 = Water Orb
+		love.graphics.newQuad(600, 0, TileW, TileH, tilesetW, tilesetH), -- 3 = Terra Orb
+		love.graphics.newQuad(0, 300, TileW, TileH, tilesetW, tilesetH),  -- 4 = Electric Orb
+		love.graphics.newQuad(300, 300, TileW, TileH, tilesetW, tilesetH), -- 5 = Light Orb
+		love.graphics.newQuad(600, 300, TileW, TileH, tilesetW, tilesetH)  -- 6 = Dark Orb
 	}
 	
 	font1 = love.graphics.setNewFont("Brushaff.otf",64)
@@ -38,13 +40,15 @@ function s.draw()
 	buttons[1]:isHovered(buttons[1],love.mouse.getX(),love.mouse.getY())
 	buttons[2]:isHovered(buttons[2],love.mouse.getX(),love.mouse.getY())
 	buttons[3]:isHovered(buttons[3],love.mouse.getX(),love.mouse.getY())
-	--love.graphics.draw(Tileset, Quads[1], 100, 100)
-	love.graphics.setFont(font1)
-	love.graphics.print("Elements & Anime",love.graphics.getWidth()/2 - (font1:getWidth("Elements & Anime")/2), 50)
-	love.graphics.setFont(font2)
-	love.graphics.print("Elements & Anime",love.graphics.getWidth()/2 - (font2:getWidth("Elements & Anime")/2), 125)
+	love.graphics.draw(Tileset, Quads[1], 20, 20)
+	love.graphics.draw(Tileset, Quads[2], love.graphics.getWidth()/2 - (TileW/2), 20)
+	love.graphics.draw(Tileset, Quads[3], love.graphics.getWidth() - 320, 20)
+	--love.graphics.setFont(font1)
+	--love.graphics.print("Elements & Anime",love.graphics.getWidth()/2 - (font1:getWidth("Elements & Anime")/2), 100)
+	--love.graphics.setFont(font2)
+	--love.graphics.print("Elements & Anime",love.graphics.getWidth()/2 - (font2:getWidth("Elements & Anime")/2), 200)
 	love.graphics.setFont(font3)
-	love.graphics.print("Elements & Anime",love.graphics.getWidth()/2 - (font3:getWidth("Elements & Anime")/2), 225)
+	love.graphics.print("Elements & Anime v1.0",love.graphics.getWidth()/2 - (font3:getWidth("Elements & Anime")/2), 150)
 end
 
 function s.update(dt)
