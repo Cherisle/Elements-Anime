@@ -1,3 +1,5 @@
+require "scenery"
+
 local Class = require("lib/middleclass")
 local Vector2 = require("lib/Vector2")
 
@@ -32,22 +34,37 @@ function Button:new(x,y,w,h,label) -- Think of this as constructor
 	return self
 end
 
-function Button:draw(self)
-	local r,g,b,a = love.graphics.getColor()
-	love.graphics.setColor(self:getClrNormal(self))
-	love.graphics.rectangle("fill", self:getPosX(self), self:getPosY(self), self.w, self.h)
-	love.graphics.setColor(r,g,b,a)
-	font = love.graphics.setNewFont("Square.ttf",32)
-	love.graphics.print(self.label,self:getPosX(self) + self.w/2 - (font:getWidth(self.label)/2), self:getPosY(self) + self.h *0.29)
-end
-
 function Button:clickedEvent(self,mx,my)
 	if mouse_inbounds(self,mx,my) then 
-		if self:getLabel(self) == "Play" then print("Play Button pressed")
-		elseif self:getLabel(self) == "Quit Game" then love.event.quit()
-		elseif self:getLabel(self) == "Settings" then print("Settings Button pressed")
-		else   print("blah")
+		if self:getLabel(self) == "Play" then 
+			love.audio.stop()
+			scenery.load("Play Button Scene")
+		elseif self:getLabel(self) == "Quit Game" then 
+			love.audio.stop()
+			love.event.quit()
+		elseif self:getLabel(self) == "Settings" then 
+			print("Settings Button pressed")
+		else   
+			print("blah")
 		end
+	end
+end
+
+function Button:isHovered(self,mx,my)
+	if mouse_inbounds(self,mx,my) then 
+		local r,g,b,a = love.graphics.getColor()
+		love.graphics.setColor(self:getClrHighlight(self))
+		love.graphics.rectangle("fill", self:getPosX(self), self:getPosY(self), self.w, self.h)
+		love.graphics.setColor(r,g,b,a)
+		font = love.graphics.setNewFont("Square.ttf",32)
+		love.graphics.print(self.label,self:getPosX(self) + self.w/2 - (font:getWidth(self.label)/2), self:getPosY(self) + self.h *0.29)
+	else
+		local r,g,b,a = love.graphics.getColor()
+		love.graphics.setColor(self:getClrNormal(self))
+		love.graphics.rectangle("fill", self:getPosX(self), self:getPosY(self), self.w, self.h)
+		love.graphics.setColor(r,g,b,a)
+		font = love.graphics.setNewFont("Square.ttf",32)
+		love.graphics.print(self.label,self:getPosX(self) + self.w/2 - (font:getWidth(self.label)/2), self:getPosY(self) + self.h *0.29)
 	end
 end
 
@@ -73,6 +90,10 @@ end
 
 function Button:getClrNormal(self)
 	return self.normal
+end
+
+function Button:getClrHighlight(self)
+	return self.highlight
 end
 
 return Button
