@@ -8,9 +8,9 @@ function s.load()
 	love.window.setMode(0,0,{resizable = true,vsync = false}) 
 	--setting the size to 0,0 will set it to the complete size of your screen
 	buttons = {n=3}
-	buttons[1] = button:new(love.graphics.getWidth()*0.5 - 90,love.graphics.getHeight()*0.335,180,80,"Play")
-	buttons[2] = button:new(love.graphics.getWidth()*0.5 - 90,love.graphics.getHeight()*0.435,180,80,"Settings")
-	buttons[3] = button:new(love.graphics.getWidth()*0.5 - 90,love.graphics.getHeight()*0.535,180,80,"Quit Game")
+	buttons[1] = button:new(love.graphics.getWidth()*0.5 - 90,love.graphics.getHeight()*0.380,180,80,"Play")
+	buttons[2] = button:new(love.graphics.getWidth()*0.5 - 90,love.graphics.getHeight()*0.480,180,80,"Settings")
+	buttons[3] = button:new(love.graphics.getWidth()*0.5 - 90,love.graphics.getHeight()*0.580,180,80,"Quit Game")
 	
 	TileW, TileH = 300,300
 	Tileset = love.graphics.newImage("Elements FWTELD.png")
@@ -31,13 +31,13 @@ function s.load()
 	-- Amtrash removed as a font choice
 	-- PhoneStreak removed as a font choice
 	
-	music = love.audio.newSource("Beat Haven.mp3") -- if "static" is omitted, LÖVE will stream the file from disk, good for longer music tracks
+	music = love.audio.newSource("Stella Glow Menu OST.mp3") -- if "static" is omitted, LÖVE will stream the file from disk, good for longer music tracks
 	music:play()
 end
 
 function s.draw() 
 	love.graphics.draw(Tileset, Quads[1], 20, 20)
-	love.graphics.draw(Tileset, Quads[2], love.graphics.getWidth()/2 - (TileW/2), 20)
+	love.graphics.draw(Tileset, Quads[2], love.graphics.getWidth()/2 - (TileW/2), 15)
 	love.graphics.draw(Tileset, Quads[4], love.graphics.getWidth() - 320, 20)
 	love.graphics.draw(Tileset, Quads[5], 20, love.graphics.getHeight() - 320)
 	love.graphics.draw(Tileset, Quads[3], love.graphics.getWidth()/2 - (TileW/2), love.graphics.getHeight() - 320)
@@ -52,7 +52,9 @@ function s.draw()
 	--love.graphics.setFont(font2)
 	--love.graphics.print("Elements & Anime",love.graphics.getWidth()/2 - (font2:getWidth("Elements & Anime")/2), 200)
 	love.graphics.setFont(font3)
-	love.graphics.print("Elements & Anime v1.0",love.graphics.getWidth()/2 - (font3:getWidth("Elements & Anime v1.0")/2), 150)
+	love.graphics.setColor(169,169,169,255)
+	love.graphics.print("Elements & Anime v1.0",love.graphics.getWidth()/2 - (font3:getWidth("Elements & Anime v1.0")/2), 300)
+	love.graphics.setColor(255,255,255,255)
 end
 
 function s.update(dt)
@@ -73,7 +75,7 @@ function love.resize(w,h)
 		buttons[buttonCount]:setWidth(buttons[buttonCount],w)
 		buttons[buttonCount]:setHeight(buttons[buttonCount],h)		
 	end
-	buttons[1] = button:new(love.graphics.getWidth()*0.5 - 90,love.graphics.getHeight()*0.335,180,80,"Play")
-	buttons[2] = button:new(love.graphics.getWidth()*0.5 - 90,love.graphics.getHeight()*0.435,180,80,"Settings")
-	buttons[3] = button:new(love.graphics.getWidth()*0.5 - 90,love.graphics.getHeight()*0.535,180,80,"Quit Game")
+	buttons[1] = button:new(love.graphics.getWidth()*0.5 - 90,love.graphics.getHeight()*0.380,180,80,"Play")
+	buttons[2] = button:new(love.graphics.getWidth()*0.5 - 90,love.graphics.getHeight()*0.480,180,80,"Settings")
+	buttons[3] = button:new(love.graphics.getWidth()*0.5 - 90,love.graphics.getHeight()*0.580,180,80,"Quit Game")
 end
