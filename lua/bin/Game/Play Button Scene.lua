@@ -22,44 +22,53 @@ function s.load()
 	PlayerGUIs[4] = PlayerGUI:new(love.graphics.getWidth() - 300,350,250,250,Players[4]:getLabel(Players[4]))
 	PlayerGUIs[5] = PlayerGUI:new(50,650,250,250,Players[5]:getLabel(Players[5]))
 	PlayerGUIs[6] = PlayerGUI:new(love.graphics.getWidth() - 300,650,250,250,Players[6]:getLabel(Players[6]))
-	BG = love.graphics.newImage("Technoheart.jpg")
+	BG = love.graphics.newImage("Beachstorm.jpg")
+	N = love.graphics.newImage("Normal Panel.png")
+	MB = love.graphics.newImage("Movement Boost Panel.png")
 	
-	--Tileset = love.graphics.newImage('countryside.png')
+	TileW, TileH = 60,60
+	Tileset = love.graphics.newImage("TestQuads.png")
   
-	--local tilesetW, tilesetH = Tileset:getWidth(), Tileset:getHeight()
-	--[[Quads = 
+	local tilesetW, tilesetH = Tileset:getWidth(), Tileset:getHeight()
+	
+	Quads = 
 	{
-		love.graphics.newQuad(0,   0, TileW, TileH, tilesetW, tilesetH), -- 1 = grass
-		love.graphics.newQuad(32,  0, TileW, TileH, tilesetW, tilesetH), -- 2 = box
-		love.graphics.newQuad(0,  32, TileW, TileH, tilesetW, tilesetH), -- 3 = flowers
-		love.graphics.newQuad(32, 32, TileW, TileH, tilesetW, tilesetH)  -- 4 = boxtop
+		love.graphics.newQuad(0,   0, TileW, TileH, tilesetW, tilesetH), -- 1 = Movement Boost Panel
+		love.graphics.newQuad(60,  0, TileW, TileH, tilesetW, tilesetH), -- 2 = Normal Panel
+		love.graphics.newQuad(120,  32, TileW, TileH, tilesetW, tilesetH), -- 3 = Water
 	}
 	TileTable =
 	{
-     { 4,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2 },
-     { 4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 },
-     { 4,1,3,1,1,1,1,1,1,1,1,1,1,1,1,3 },
-     { 4,1,1,1,1,1,1,1,2,1,1,2,1,1,1,1 },
-     { 4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 },
-     { 4,1,1,4,1,1,1,1,1,2,2,1,1,4,1,1 },
-     { 4,1,1,4,1,1,1,1,4,3,3,4,1,2,1,1 },
-     { 4,1,1,4,1,1,1,1,4,3,3,4,1,1,4,1 },
-     { 4,1,1,4,1,1,1,1,4,3,3,4,1,1,2,1 },           
-     { 4,1,1,4,1,1,1,1,2,3,3,2,1,1,1,4 },
-     { 4,1,1,2,2,2,2,1,1,2,2,1,1,1,1,2 },
-     { 4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 },
-     { 4,1,1,1,1,1,1,1,1,2,1,1,1,1,2,2 },
-     { 4,1,1,1,1,1,1,1,4,3,4,1,1,1,1,1 },
-     { 4,1,1,3,1,1,1,1,2,3,2,1,1,1,1,2 },
-     { 4,1,1,1,1,1,1,1,1,2,1,1,2,1,2,1 },
-     { 4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 },
-     { 2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2 }
+     { 2,2,2,2,2,2,2,2,2,2,2,2,2,2,2 },
+     { 2,1,1,1,1,1,1,1,1,1,1,1,1,1,2 },
+     { 2,1,1,1,1,3,3,3,3,3,1,1,1,1,2 },
+     { 2,1,1,1,3,3,3,3,3,3,3,1,1,1,2 },
+     { 2,1,1,3,3,3,3,3,3,3,3,3,1,1,2 },
+     { 2,1,3,3,3,3,3,3,3,3,3,3,3,1,2 },
+     { 2,2,2,2,2,2,2,2,2,2,2,2,2,2,2 },
+     { 2,2,2,2,2,2,2,2,2,2,2,2,2,2,2 },
+     { 2,2,2,2,2,2,2,2,2,2,2,2,2,2,2 },           
+     { 2,1,3,3,3,3,3,3,3,3,3,3,3,1,2 },
+     { 2,1,1,3,3,3,3,3,3,3,3,3,1,1,2 },
+     { 2,1,1,1,3,3,3,3,3,3,3,1,1,1,2 },
+     { 2,1,1,1,1,3,3,3,3,3,1,1,1,1,2 },
+     { 2,1,1,1,1,1,1,1,1,1,1,1,1,1,2 },
+     { 2,2,2,2,2,2,2,2,2,2,2,2,2,2,2 }
 	}
-	font1 = love.graphics.setNewFont("Brushaff.otf",64)]]
+	font1 = love.graphics.setNewFont("Brushaff.otf",64)
 end
 
 function s.draw() 
-	love.graphics.draw(BG, love.graphics.getWidth()/2 - 400, love.graphics.getHeight()/2 - 400)
+	--love.graphics.draw(BG, love.graphics.getWidth()/2 - 450, love.graphics.getHeight()/2 - 450)
+	for rowIndex=1, #TileTable do
+		local row = TileTable[rowIndex]
+		for columnIndex=1, #row do
+			local number = row[columnIndex]
+			local x = love.graphics.getWidth()/2 - 450 + (columnIndex-1)*TileW
+			local y = love.graphics.getHeight()/2 - 450 + (rowIndex-1)*TileH
+			love.graphics.draw(Tileset, Quads[number], x, y)
+		end
+	end
 	PlayerGUIs[1]:isHovered(PlayerGUIs[1],love.mouse.getX(),love.mouse.getY())
 	PlayerGUIs[2]:isHovered(PlayerGUIs[2],love.mouse.getX(),love.mouse.getY())
 	PlayerGUIs[3]:isHovered(PlayerGUIs[3],love.mouse.getX(),love.mouse.getY())
