@@ -27,7 +27,7 @@ function s.load()
 	MB = love.graphics.newImage("Movement Boost Panel.png")
 	
 	TileW, TileH = 60,60
-	Tileset = love.graphics.newImage("TestQuads.png")
+	Tileset = love.graphics.newImage("TestQuads v3.png")
   
 	local tilesetW, tilesetH = Tileset:getWidth(), Tileset:getHeight()
 	
@@ -35,25 +35,27 @@ function s.load()
 	{
 		love.graphics.newQuad(0,   0, TileW, TileH, tilesetW, tilesetH), -- 1 = Movement Boost Panel
 		love.graphics.newQuad(60,  0, TileW, TileH, tilesetW, tilesetH), -- 2 = Normal Panel
-		love.graphics.newQuad(120,  32, TileW, TileH, tilesetW, tilesetH), -- 3 = Water
+		love.graphics.newQuad(120, 0, TileW, TileH, tilesetW, tilesetH), -- 3 = Water
+		love.graphics.newQuad(180, 0, TileW, TileH, tilesetW, tilesetH), -- 4 = Sand
+		love.graphics.newQuad(0, 60, TileW, TileH, tilesetW, tilesetH), -- 5 = Sand UL Water BR
 	}
 	TileTable =
 	{
-     { 2,2,2,2,2,2,2,2,2,2,2,2,2,2,2 },
-     { 2,1,1,1,1,1,1,1,1,1,1,1,1,1,2 },
-     { 2,1,1,1,1,3,3,3,3,3,1,1,1,1,2 },
-     { 2,1,1,1,3,3,3,3,3,3,3,1,1,1,2 },
-     { 2,1,1,3,3,3,3,3,3,3,3,3,1,1,2 },
-     { 2,1,3,3,3,3,3,3,3,3,3,3,3,1,2 },
+     { 4,4,4,1,2,2,2,2,2,2,2,2,2,4,4 },
+     { 4,4,1,2,1,4,4,4,4,4,1,1,1,1,4 },
+     { 4,1,2,1,5,3,3,3,3,3,4,1,1,1,2 },
+     { 1,2,1,5,3,3,3,3,3,3,3,4,1,1,2 },
+     { 2,1,5,3,3,3,3,3,3,3,3,3,4,1,2 },
+     { 2,5,3,3,3,3,3,3,3,3,3,3,3,4,2 },
      { 2,2,2,2,2,2,2,2,2,2,2,2,2,2,2 },
      { 2,2,2,2,2,2,2,2,2,2,2,2,2,2,2 },
      { 2,2,2,2,2,2,2,2,2,2,2,2,2,2,2 },           
-     { 2,1,3,3,3,3,3,3,3,3,3,3,3,1,2 },
-     { 2,1,1,3,3,3,3,3,3,3,3,3,1,1,2 },
-     { 2,1,1,1,3,3,3,3,3,3,3,1,1,1,2 },
-     { 2,1,1,1,1,3,3,3,3,3,1,1,1,1,2 },
-     { 2,1,1,1,1,1,1,1,1,1,1,1,1,1,2 },
-     { 2,2,2,2,2,2,2,2,2,2,2,2,2,2,2 }
+     { 2,4,3,3,3,3,3,3,3,3,3,3,3,4,2 },
+     { 2,1,4,3,3,3,3,3,3,3,3,3,4,1,2 },
+     { 2,1,1,4,3,3,3,3,3,3,3,4,1,1,2 },
+     { 2,1,1,1,4,3,3,3,3,3,4,1,1,1,2 },
+     { 4,1,1,1,1,4,4,4,4,4,1,1,1,1,4 },
+     { 4,4,2,2,2,2,2,2,2,2,2,2,2,4,4 }
 	}
 	font1 = love.graphics.setNewFont("Brushaff.otf",64)
 end
