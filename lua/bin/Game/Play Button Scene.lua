@@ -28,7 +28,11 @@ function s.load()
 	DrwP = love.graphics.newImage("Panels/General/Draw Panel.png")
 	FuSa = love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Sand-Full.png")
 	SULw = love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/SandUL WaterBR.png")
+	SBLw = love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/SandBL WaterUR.png")
+	SURw = love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/SandUR WaterBL.png")
+	SBRw = love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/SandBR WaterUL.png")
 	WtrP = love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Water Panel.png")
+	WWUL = love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Water WaveUL.png")
 	Fllr = love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Filler Panel.png")
 	
 	TileW, TileH = 60,60
@@ -36,18 +40,18 @@ function s.load()
 	TileTable =
 	{
      { FuSa,FuSa,FuSa,Fllr,DrwP,Nrml,Nrml,Nrml,Nrml,Nrml,Nrml,Fllr,FuSa,FuSa,FuSa },
-     { FuSa,FuSa,Fllr,Nrml,FuSa,FuSa,FuSa,FuSa,FuSa,FuSa,Fllr,Fllr,MoBo,FuSa,FuSa },
-     { FuSa,Fllr,Nrml,FuSa,SULw,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,Fllr,Fllr,MoBo,FuSa },
-     { Fllr,Nrml,FuSa,SULw,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,Fllr,Fllr,Fllr,Nrml },
-     { DrwP,FuSa,SULw,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,Fllr,Fllr,Nrml },
-     { Nrml,SULw,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,Fllr,Nrml },
+     { FuSa,FuSa,Fllr,Nrml,FuSa,FuSa,FuSa,FuSa,FuSa,FuSa,FuSa,Nrml,Fllr,FuSa,FuSa },
+     { FuSa,Fllr,Nrml,FuSa,SULw,WtrP,WtrP,WtrP,WtrP,WtrP,SURw,Fllr,Nrml,Fllr,FuSa },
+     { Fllr,Nrml,FuSa,SULw,WWUL,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,SURw,Fllr,Nrml,Fllr },
+     { DrwP,FuSa,SULw,WWUL,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,SURw,Fllr,Nrml },
+     { Nrml,SULw,WWUL,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,SURw,Nrml },
      { Nrml,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Nrml },
-     { Nrml,DrwP,Nrml,Nrml,Nrml,Nrml,Nrml,Nrml,Nrml,Nrml,Nrml,Nrml,Nrml,DrwP,Nrml },
+     { Nrml,DrwP,Nrml,Nrml,Nrml,Nrml,MoBo,Nrml,MoBo,Nrml,Nrml,Nrml,Nrml,DrwP,Nrml },
      { Nrml,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Nrml },           
-     { Nrml,FuSa,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,FuSa,Nrml },
-     { Nrml,Fllr,FuSa,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,FuSa,Fllr,DrwP },
-     { Fllr,Nrml,Fllr,FuSa,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,FuSa,Fllr,Nrml,Fllr },
-     { FuSa,Fllr,MoBo,Fllr,FuSa,WtrP,WtrP,WtrP,WtrP,WtrP,FuSa,Fllr,Nrml,Fllr,FuSa },
+     { Nrml,SBLw,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,SBRw,Nrml },
+     { Nrml,Fllr,SBLw,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,SBRw,Fllr,DrwP },
+     { Fllr,Nrml,Fllr,SBLw,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,SBRw,Fllr,Nrml,Fllr },
+     { FuSa,Fllr,MoBo,Fllr,SBLw,WtrP,WtrP,WtrP,WtrP,WtrP,SBRw,Fllr,Nrml,Fllr,FuSa },
      { FuSa,FuSa,Fllr,Nrml,Fllr,FuSa,FuSa,FuSa,FuSa,FuSa,Fllr,Nrml,Fllr,FuSa,FuSa },
      { FuSa,FuSa,FuSa,Fllr,Nrml,DrwP,Nrml,Nrml,DrwP,Nrml,Nrml,Fllr,FuSa,FuSa,FuSa }
 	}
