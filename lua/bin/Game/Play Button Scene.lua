@@ -1,5 +1,6 @@
 require "scenery"
 ui = require "loveui/ui"
+mainScript = require "main"
 local PlayerGUI = require "PlayerGUI"
 local Player = require "Player"
 local context = ui.context()
@@ -22,10 +23,10 @@ function s.load()
 	PlayerGUIs[4] = PlayerGUI:new(love.graphics.getWidth() - 300,350,250,250,Players[4]:getLabel(Players[4]))
 	PlayerGUIs[5] = PlayerGUI:new(50,650,250,250,Players[5]:getLabel(Players[5]))
 	PlayerGUIs[6] = PlayerGUI:new(love.graphics.getWidth() - 300,650,250,250,Players[6]:getLabel(Players[6]))
-	--BG = love.graphics.newImage("Beachstorm.jpg")
 	Nrml = love.graphics.newImage("Panels/General/Normal Panel.png")
 	MoBo = love.graphics.newImage("Panels/General/Movement Boost Panel.png")
 	DrwP = love.graphics.newImage("Panels/General/Draw Panel.png")
+	HomT = love.graphics.newImage("Panels/General/Home Panel Test.png")
 	FuSa = love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Sand-Full.png")
 	SULw = love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/SandUL WaterBR.png")
 	SBLw = love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/SandBL WaterUR.png")
@@ -42,21 +43,21 @@ function s.load()
 	
 	TileTable =
 	{
-     { FuSa,FuSa,FuSa,Fllr,DrwP,Nrml,Nrml,Nrml,Nrml,Nrml,Nrml,Fllr,FuSa,FuSa,FuSa },
+     { FuSa,FuSa,FuSa,Fllr,DrwP,Nrml,Nrml,HomT,Nrml,Nrml,Nrml,Fllr,FuSa,FuSa,FuSa },
      { FuSa,FuSa,Fllr,Nrml,FuSa,FuSa,FuSa,FuSa,FuSa,FuSa,FuSa,Nrml,Fllr,FuSa,FuSa },
      { FuSa,Fllr,Nrml,FuSa,SULw,WtrP,WtrP,WtrP,WtrP,WtrP,SURw,Fllr,Nrml,Fllr,FuSa },
      { Fllr,Nrml,FuSa,SULw,WWUL,WtrP,WtrP,WtrP,WtrP,WtrP,WWUR,SURw,Fllr,Nrml,Fllr },
      { DrwP,FuSa,SULw,WWUL,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WWUR,SURw,Fllr,Nrml },
-     { Nrml,SULw,WWUL,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WWUR,SURw,Nrml },
+     { HomT,SULw,WWUL,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WWUR,SURw,Nrml },
      { Nrml,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Nrml },
-     { Nrml,DrwP,Nrml,Nrml,Nrml,Nrml,MoBo,Nrml,MoBo,Nrml,Nrml,Nrml,Nrml,DrwP,Nrml },
-     { Nrml,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Nrml },           
+     { Nrml,DrwP,Nrml,Nrml,Nrml,HomT,MoBo,Nrml,MoBo,HomT,Nrml,Nrml,Nrml,DrwP,Nrml },
+     { Nrml,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,HomT },           
      { Nrml,SBLw,WWBL,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WWBR,SBRw,Nrml },
      { Nrml,Fllr,SBLw,WWBL,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WWBR,SBRw,Fllr,DrwP },
      { Fllr,Nrml,Fllr,SBLw,WWBL,WtrP,WtrP,WtrP,WtrP,WtrP,WWBR,SBRw,Fllr,Nrml,Fllr },
      { FuSa,Fllr,MoBo,Fllr,SBLw,WtrP,WtrP,WtrP,WtrP,WtrP,SBRw,Fllr,MoBo,Fllr,FuSa },
      { FuSa,FuSa,Fllr,Nrml,Fllr,FuSa,FuSa,FuSa,FuSa,FuSa,Fllr,Nrml,Fllr,FuSa,FuSa },
-     { FuSa,FuSa,FuSa,Fllr,Nrml,DrwP,Nrml,Nrml,DrwP,Nrml,Nrml,Fllr,FuSa,FuSa,FuSa }
+     { FuSa,FuSa,FuSa,Fllr,Nrml,DrwP,Nrml,HomT,DrwP,Nrml,Nrml,Fllr,FuSa,FuSa,FuSa }
 	}
 	font1 = love.graphics.setNewFont("Brushaff.otf",64)
 end
@@ -86,6 +87,7 @@ end
 
 function love.mousepressed(x, y, button)
 	if button == 2 then
+		_G.counter = 2
 		scenery.load("MainMenu")
     end
 end

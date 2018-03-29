@@ -57,14 +57,14 @@ function Button:isHovered(self,mx,my)
 		love.graphics.rectangle("fill", self:getPosX(self), self:getPosY(self), self.w, self.h)
 		love.graphics.setColor(r,g,b,a)
 		font = love.graphics.setNewFont("Square.ttf",32)
-		love.graphics.print(self.label,self:getPosX(self) + self.w/2 - (font:getWidth(self.label)/2), self:getPosY(self) + self.h *0.29)
+		love.graphics.print(self.label,self:getPosX(self) + self.w/2 - (font:getWidth(self.label)/2), self:getPosY(self) + self.h/2 - (font:getHeight()/2))
 	else
 		local r,g,b,a = love.graphics.getColor()
 		love.graphics.setColor(self:getClrNormal(self))
 		love.graphics.rectangle("fill", self:getPosX(self), self:getPosY(self), self.w, self.h)
 		love.graphics.setColor(r,g,b,a)
 		font = love.graphics.setNewFont("Square.ttf",32)
-		love.graphics.print(self.label,self:getPosX(self) + self.w/2 - (font:getWidth(self.label)/2), self:getPosY(self) + self.h *0.29)
+		love.graphics.print(self.label,self:getPosX(self) + self.w/2 - (font:getWidth(self.label)/2), self:getPosY(self) + self.h/2 - (font:getHeight()/2))
 	end
 end
 
