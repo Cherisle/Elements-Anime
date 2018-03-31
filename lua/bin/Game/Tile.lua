@@ -96,22 +96,3 @@ function Tile:getLabel(self)
 end
 
 return Tile
-
---[[
-  Nrml = Tile:new(love.graphics.newImage("Panels/General/Normal Panel.png"), true, "Nrml")
-	MoBo = Tile:new(love.graphics.newImage("Panels/General/Movement Boost Panel.png"), false, "MoBo")
-	DrwP = Tile:new(love.graphics.newImage("Panels/General/Draw Panel.png"), false, "DrwP")
-	FuSa = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Sand-Full.png"), false, "FuSa")
-	SULw = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/SandUL WaterBR.png"), false, "SULw")
-	SBLw = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/SandBL WaterUR.png"), false, "SBLw")
-	SURw = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/SandUR WaterBL.png"), false, "SURw")
-	SBRw = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/SandBR WaterUL.png"), false, "SBRw")
-	Wtrp = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Water Panel.png"), false, "Wtrp")
-	WWUL = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Water WaveUL.png"), false, "WWUL")
-	WWUR = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Water WaveUR.png"), false, "WWUR")
-	WWBL = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Water WaveBL.png"), false, "WWBL")
-	WWBR = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Water WaveBR.png"), false, "WWBR")
-	Fllr = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Filler Panel.png"), false, "Fllr")
-
-
-]]
