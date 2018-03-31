@@ -25,20 +25,20 @@ function s.load()
 	PlayerGUIs[6] = PlayerGUI:new(love.graphics.getWidth() - 300,650,250,250,Players[6]:getLabel(Players[6]))
 	--BG = love.graphics.newImage("Beachstorm.jpg")
 
-	Nrml = Tile:new(love.graphics.newImage("Panels/General/Normal Panel.png"), true)
-	MoBo = Tile:new(love.graphics.newImage("Panels/General/Movement Boost Panel.png"), false)
-	DrwP = Tile:new(love.graphics.newImage("Panels/General/Draw Panel.png"), false)
-	FuSa = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Sand-Full.png"), false)
-	SULw = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/SandUL WaterBR.png"), false)
-	SBLw = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/SandBL WaterUR.png"), false)
-	SURw = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/SandUR WaterBL.png"), false)
-	SBRw = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/SandBR WaterUL.png"), false)
-	Wtrp = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Water Panel.png"), false)
-	WWUL = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Water WaveUL.png"), false)
-	WWUR = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Water WaveUR.png"), false)
-	WWBL = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Water WaveBL.png"), false)
-	WWBR = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Water WaveBR.png"), false)
-	Fllr = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Filler Panel.png"), false)
+	Nrml = Tile:new(love.graphics.newImage("Panels/General/Normal Panel.png"), true, "Nrml")
+	MoBo = Tile:new(love.graphics.newImage("Panels/General/Movement Boost Panel.png"), false, "MoBo")
+	DrwP = Tile:new(love.graphics.newImage("Panels/General/Draw Panel.png"), false, "DrwP")
+	FuSa = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Sand-Full.png"), false, "FuSa")
+	SULw = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/SandUL WaterBR.png"), false, "SULw")
+	SBLw = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/SandBL WaterUR.png"), false, "SBLw")
+	SURw = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/SandUR WaterBL.png"), false, "SURw")
+	SBRw = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/SandBR WaterUL.png"), false, "SBRw")
+	Wtrp = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Water Panel.png"), false, "Wtrp")
+	WWUL = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Water WaveUL.png"), false, "WWUL")
+	WWUR = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Water WaveUR.png"), false, "WWUR")
+	WWBL = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Water WaveBL.png"), false, "WWBL")
+	WWBR = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Water WaveBR.png"), false, "WWBR")
+	Fllr = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Filler Panel.png"), false, "Fllr")
 
 	--[[
 	Nrml = love.graphics.newImage("Panels/General/Normal Panel.png")
@@ -79,6 +79,79 @@ function s.load()
      { FuSa:getImage(FuSa),FuSa:getImage(FuSa),Fllr:getImage(Fllr),Nrml:getImage(Nrml),Fllr:getImage(Fllr),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),Fllr:getImage(Fllr),Nrml:getImage(Nrml),Fllr:getImage(Fllr),FuSa:getImage(FuSa),FuSa:getImage(FuSa) },
      { FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),Fllr:getImage(Fllr),Nrml:getImage(Nrml),DrwP:getImage(DrwP),Nrml:getImage(Nrml),Nrml:getImage(Nrml),DrwP:getImage(DrwP),Nrml:getImage(Nrml),Nrml:getImage(Nrml),Fllr:getImage(Fllr),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa) }
 	}
+
+	tileLocCounter = {n = 14}
+	for i = 1, 14, 1 do
+		tileLocCounter[i] = 0;
+	end
+
+	--Sets the positions of all the tile object based on the TileTable
+	for rowIndex=1, #TileTable do
+		local row = TileTable[rowIndex]
+		for columnIndex=1, #row do
+			local identifier = row[columnIndex]
+			local x = love.graphics.getWidth()/2 - 450 + (columnIndex-1)*TileW
+			local y = love.graphics.getHeight()/2 - 450 + (rowIndex-1)*TileH
+
+			if (identifier == Nrml:getImage(Nrml)) then
+				tileLocCounter[1] = tileLocCounter[1] + 1
+				Nrml:setTileLoc(Nrml, tileLocCounter[1],x,y)
+
+			elseif (identifier == MoBo:getImage(MoBo)) then
+				tileLocCounter[2] = tileLocCounter[2] + 1
+				MoBo:setTileLoc(MoBo, tileLocCounter[2],x,y)
+
+			elseif (identifier == DrwP:getImage(DrwP)) then
+				tileLocCounter[3] = tileLocCounter[3] + 1
+				DrwP:setTileLoc(DrwP, tileLocCounter[3],x,y)
+
+			elseif (identifier == FuSa:getImage(FuSa)) then
+				tileLocCounter[4] = tileLocCounter[4] + 1
+				FuSa:setTileLoc(FuSa, tileLocCounter[4],x,y)
+
+			elseif (identifier == SULw:getImage(SULw)) then
+				tileLocCounter[5] = tileLocCounter[5] + 1
+				SULw:setTileLoc(SULw, tileLocCounter[5],x,y)
+
+			elseif (identifier == SBLw:getImage(SBLw)) then
+				tileLocCounter[6] = tileLocCounter[6] + 1
+				SBLw:setTileLoc(SBLw, tileLocCounter[6],x,y)
+
+			elseif (identifier == SURw:getImage(SURw)) then
+				tileLocCounter[7] = tileLocCounter[7] + 1
+				SURw:setTileLoc(SURw, tileLocCounter[7],x,y)
+
+			elseif (identifier == SBRw:getImage(SBRw)) then
+				tileLocCounter[8] = tileLocCounter[8] + 1
+				SBRw:setTileLoc(SBRw, tileLocCounter[8],x,y)
+
+			elseif (identifier == Wtrp:getImage(Wtrp)) then
+				tileLocCounter[9] = tileLocCounter[9] + 1
+				Wtrp:setTileLoc(Wtrp, tileLocCounter[9],x,y)
+
+			elseif (identifier == WWUL:getImage(WWUL)) then
+				tileLocCounter[10] = tileLocCounter[10] + 1
+				WWUL:setTileLoc(WWUL, tileLocCounter[10],x,y)
+
+			elseif (identifier == WWUR:getImage(WWUR)) then
+				tileLocCounter[11] = tileLocCounter[11] + 1
+				WWUR:setTileLoc(WWUR, tileLocCounter[11],x,y)
+
+			elseif (identifier == WWBL:getImage(WWBL)) then
+				tileLocCounter[12] = tileLocCounter[12] + 1
+				WWBL:setTileLoc(WWBL, tileLocCounter[12],x,y)
+
+			elseif (identifier == WWBR:getImage(WWBR)) then
+				tileLocCounter[13] = tileLocCounter[13] + 1
+				WWBR:setTileLoc(WWBR, tileLocCounter[13],x,y)
+
+			elseif (identifier == Fllr:getImage(Fllr)) then
+				tileLocCounter[14] = tileLocCounter[14] + 1
+				Fllr:setTileLoc(Fllr, tileLocCounter[14],x,y)
+			end
+
+		end
+
 	--font1 = love.graphics.setNewFont("Fonts/Brushaff.otf", 64)
 	font1 = love.graphics.setNewFont("Brushaff.otf",64)
 end
@@ -100,6 +173,22 @@ function s.draw()
 	PlayerGUIs[4]:isHovered(PlayerGUIs[4],love.mouse.getX(),love.mouse.getY())
 	PlayerGUIs[5]:isHovered(PlayerGUIs[5],love.mouse.getX(),love.mouse.getY())
 	PlayerGUIs[6]:isHovered(PlayerGUIs[6],love.mouse.getX(),love.mouse.getY())
+
+	--[[Nrml:isHovered(Nrml,love.mouse.getX(),love.mouse.getY())
+	MoBo:isHovered(MoBo,love.mouse.getX(),love.mouse.getY())
+	DrwP:isHovered(DrwP,love.mouse.getX(),love.mouse.getY())
+	FuSa:isHovered(FuSa,love.mouse.getX(),love.mouse.getY())
+	SULw:isHovered(SULw,love.mouse.getX(),love.mouse.getY())
+	SBLw:isHovered(SBLw,love.mouse.getX(),love.mouse.getY())
+	SURw:isHovered(SURw,love.mouse.getX(),love.mouse.getY())
+	SBRw:isHovered(SBRw,love.mouse.getX(),love.mouse.getY())
+	Wtrp:isHovered(Wtrp,love.mouse.getX(),love.mouse.getY())
+	WWUL:isHovered(WWUL,love.mouse.getX(),love.mouse.getY())
+	WWUR:isHovered(WWUR,love.mouse.getX(),love.mouse.getY())
+	WWBL:isHovered(WWBL,love.mouse.getX(),love.mouse.getY())
+	WWBR:isHovered(WWBR,love.mouse.getX(),love.mouse.getY())
+	Fllr:isHovered(Fllr,love.mouse.getX(),love.mouse.getY()) ]]
+
 end
 
 function s.update(dt)
@@ -107,11 +196,23 @@ function s.update(dt)
 end
 
 function love.mousepressed(x, y, button)
-	if button == 2 then
+	if button == 1 then
+		Nrml:clikedEvent(Nrml, love.mouse.getX(), love.mouse.getY())
+		DrwP:clikedEvent(DrwP,love.mouse.getX(),love.mouse.getY())
+		FuSa:clikedEvent(FuSa,love.mouse.getX(),love.mouse.getY())
+		SULw:clikedEvent(SULw,love.mouse.getX(),love.mouse.getY())
+		SBLw:clikedEvent(SBLw,love.mouse.getX(),love.mouse.getY())
+		SURw:clikedEvent(SURw,love.mouse.getX(),love.mouse.getY())
+		SBRw:clikedEvent(SBRw,love.mouse.getX(),love.mouse.getY())
+		Wtrp:clikedEvent(Wtrp,love.mouse.getX(),love.mouse.getY())
+		WWUL:clikedEvent(WWUL,love.mouse.getX(),love.mouse.getY())
+		WWUR:clikedEvent(WWUR,love.mouse.getX(),love.mouse.getY())
+		WWBL:clikedEvent(WWBL,love.mouse.getX(),love.mouse.getY())
+		WWBR:clikedEvent(WWBR,love.mouse.getX(),love.mouse.getY())
+		Fllr:clikedEvent(Fllr,love.mouse.getX(),love.mouse.getY())
+	else if button == 2 then
 		scenery.load("MainMenu")
     end
+	end
 end
-
-function love.resize(w,h)
-
 end
