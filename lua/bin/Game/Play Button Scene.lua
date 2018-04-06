@@ -26,7 +26,12 @@ function s.load()
 	Nrml = love.graphics.newImage("Panels/General/Normal Panel.png")
 	MoBo = love.graphics.newImage("Panels/General/Movement Boost Panel.png")
 	DrwP = love.graphics.newImage("Panels/General/Draw Panel.png")
-	HomT = love.graphics.newImage("Panels/General/Home Panel Test.png")
+	Hom1 = love.graphics.newImage("Panels/General/Home Panel 1 - Hom1.png")
+	Hom2 = love.graphics.newImage("Panels/General/Home Panel 2 - Hom2.png")
+	Hom3 = love.graphics.newImage("Panels/General/Home Panel 3 - Hom3.png")
+	Hom4 = love.graphics.newImage("Panels/General/Home Panel 4 - Hom4.png")
+	Hom5 = love.graphics.newImage("Panels/General/Home Panel 5 - Hom5.png")
+	Hom6 = love.graphics.newImage("Panels/General/Home Panel 6 - Hom6.png")
 	FuSa = love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Sand-Full.png")
 	SULw = love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/SandUL WaterBR.png")
 	SBLw = love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/SandBL WaterUR.png")
@@ -43,21 +48,21 @@ function s.load()
 	
 	TileTable =
 	{
-     { FuSa,FuSa,FuSa,Fllr,DrwP,Nrml,Nrml,HomT,Nrml,Nrml,Nrml,Fllr,FuSa,FuSa,FuSa },
+     { FuSa,FuSa,FuSa,Fllr,DrwP,Nrml,Nrml,Hom5,Nrml,Nrml,Nrml,Fllr,FuSa,FuSa,FuSa },
      { FuSa,FuSa,Fllr,Nrml,FuSa,FuSa,FuSa,FuSa,FuSa,FuSa,FuSa,Nrml,Fllr,FuSa,FuSa },
      { FuSa,Fllr,Nrml,FuSa,SULw,WtrP,WtrP,WtrP,WtrP,WtrP,SURw,Fllr,Nrml,Fllr,FuSa },
      { Fllr,Nrml,FuSa,SULw,WWUL,WtrP,WtrP,WtrP,WtrP,WtrP,WWUR,SURw,Fllr,Nrml,Fllr },
      { DrwP,FuSa,SULw,WWUL,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WWUR,SURw,Fllr,Nrml },
-     { HomT,SULw,WWUL,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WWUR,SURw,Nrml },
+     { Hom4,SULw,WWUL,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WWUR,SURw,Nrml },
      { Nrml,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Nrml },
-     { Nrml,DrwP,Nrml,Nrml,Nrml,HomT,MoBo,Nrml,MoBo,HomT,Nrml,Nrml,Nrml,DrwP,Nrml },
-     { Nrml,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,HomT },           
+     { Nrml,DrwP,Nrml,Nrml,Nrml,Hom6,MoBo,Nrml,MoBo,Hom1,Nrml,Nrml,Nrml,DrwP,Nrml },
+     { Nrml,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Fllr,Hom2 },           
      { Nrml,SBLw,WWBL,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WWBR,SBRw,Nrml },
      { Nrml,Fllr,SBLw,WWBL,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WtrP,WWBR,SBRw,Fllr,DrwP },
      { Fllr,Nrml,Fllr,SBLw,WWBL,WtrP,WtrP,WtrP,WtrP,WtrP,WWBR,SBRw,Fllr,Nrml,Fllr },
      { FuSa,Fllr,MoBo,Fllr,SBLw,WtrP,WtrP,WtrP,WtrP,WtrP,SBRw,Fllr,MoBo,Fllr,FuSa },
      { FuSa,FuSa,Fllr,Nrml,Fllr,FuSa,FuSa,FuSa,FuSa,FuSa,Fllr,Nrml,Fllr,FuSa,FuSa },
-     { FuSa,FuSa,FuSa,Fllr,Nrml,DrwP,Nrml,HomT,DrwP,Nrml,Nrml,Fllr,FuSa,FuSa,FuSa }
+     { FuSa,FuSa,FuSa,Fllr,Nrml,DrwP,Nrml,Hom3,DrwP,Nrml,Nrml,Fllr,FuSa,FuSa,FuSa }
 	}
 	font1 = love.graphics.setNewFont("Brushaff.otf",64)
 end
