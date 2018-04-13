@@ -22,7 +22,7 @@ end
 
 
 
-function Tile:onTile(self, tileLoc, player)
+function TileMaps:onTile(self, tileLoc, player)
   loc = 0
   for i = 1, table.getn(self.key), 1 do
     if (tileLoc == self.key[i]) then
@@ -33,7 +33,7 @@ function Tile:onTile(self, tileLoc, player)
   self.dataType[loc][nEmptyTile + 1] = player
 end
 
-function tile:offTile(self, tileLoc, player)
+function TileMaps:offTile(self, tileLoc, player)
   loc = 0
   locPlayer = 0
   for i = 1, table.getn(self.key), 1 do
@@ -49,4 +49,4 @@ function tile:offTile(self, tileLoc, player)
   table.remove(self.dataType[loc], locPlayer)
 end
 
-return TileMaps 
+return TileMaps

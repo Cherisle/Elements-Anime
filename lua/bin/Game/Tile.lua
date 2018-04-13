@@ -1,6 +1,6 @@
 local Class = require("lib/middleclass")
 local Vector2 = require("lib/Vector2")
-local Maps = require "Maps"
+local TileMaps = require "TileMaps"
 
 local Tile = {}
 Tile.__index = Tile
