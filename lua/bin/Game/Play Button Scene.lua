@@ -17,13 +17,15 @@ function s.load()
 	Players[5] = Player:new("Team 5",0,0)
 	Players[6] = Player:new("Team 6",0,0)
 	PlayerGUIs = {n=6}
-	PlayerGUIs[1] = PlayerGUI:new(50,50,250,250,Players[1]:getLabel(Players[1]))
-	PlayerGUIs[2] = PlayerGUI:new(love.graphics.getWidth() - 300,50,250,250,Players[2]:getLabel(Players[2]))
-	PlayerGUIs[3] = PlayerGUI:new(50,350,250,250,Players[3]:getLabel(Players[3]))
-	PlayerGUIs[4] = PlayerGUI:new(love.graphics.getWidth() - 300,350,250,250,Players[4]:getLabel(Players[4]))
-	PlayerGUIs[5] = PlayerGUI:new(50,650,250,250,Players[5]:getLabel(Players[5]))
-	PlayerGUIs[6] = PlayerGUI:new(love.graphics.getWidth() - 300,650,250,250,Players[6]:getLabel(Players[6]))
+	PlayerGUIs[1] = PlayerGUI:new(50,50,250,250,Players[1]:getLabel(Players[1]), Players[1])
+	PlayerGUIs[2] = PlayerGUI:new(love.graphics.getWidth() - 300,50,250,250,Players[2]:getLabel(Players[2]), Players[2])
+	PlayerGUIs[3] = PlayerGUI:new(50,350,250,250,Players[3]:getLabel(Players[3]), Players[3])
+	PlayerGUIs[4] = PlayerGUI:new(love.graphics.getWidth() - 300,350,250,250,Players[4]:getLabel(Players[4]), Players[4])
+	PlayerGUIs[5] = PlayerGUI:new(50,650,250,250,Players[5]:getLabel(Players[5]), Players[5])
+	PlayerGUIs[6] = PlayerGUI:new(love.graphics.getWidth() - 300,650,250,250,Players[6]:getLabel(Players[6]), Players[6])
 	--BG = love.graphics.newImage("Beachstorm.jpg")
+
+
 
 	Nrml = Tile:new(love.graphics.newImage("Panels/General/Normal Panel.png"), true, "Nrml")
 	MoBo = Tile:new(love.graphics.newImage("Panels/General/Movement Boost Panel.png"), false, "MoBo")
@@ -157,6 +159,8 @@ function s.load()
 end
 
 function s.draw()
+
+
 	--love.graphics.draw(BG, love.graphics.getWidth()/2 - 450, love.graphics.getHeight()/2 - 450)
 	for rowIndex=1, #TileTable do
 		local row = TileTable[rowIndex]
@@ -167,12 +171,22 @@ function s.draw()
 			love.graphics.draw(identifier, x, y)
 		end
 	end
+
+
+	PlayerGUIs[1]:drawPlayer(PlayerGUIs[1])
+	PlayerGUIs[2]:drawPlayer(PlayerGUIs[2])
+	PlayerGUIs[3]:drawPlayer(PlayerGUIs[3])
+	PlayerGUIs[4]:drawPlayer(PlayerGUIs[4])
+	PlayerGUIs[5]:drawPlayer(PlayerGUIs[5])
+	PlayerGUIs[6]:drawPlayer(PlayerGUIs[6])
+
 	PlayerGUIs[1]:isHovered(PlayerGUIs[1],love.mouse.getX(),love.mouse.getY())
 	PlayerGUIs[2]:isHovered(PlayerGUIs[2],love.mouse.getX(),love.mouse.getY())
 	PlayerGUIs[3]:isHovered(PlayerGUIs[3],love.mouse.getX(),love.mouse.getY())
 	PlayerGUIs[4]:isHovered(PlayerGUIs[4],love.mouse.getX(),love.mouse.getY())
 	PlayerGUIs[5]:isHovered(PlayerGUIs[5],love.mouse.getX(),love.mouse.getY())
 	PlayerGUIs[6]:isHovered(PlayerGUIs[6],love.mouse.getX(),love.mouse.getY())
+
 
 	--[[Nrml:isHovered(Nrml,love.mouse.getX(),love.mouse.getY())
 	MoBo:isHovered(MoBo,love.mouse.getX(),love.mouse.getY())

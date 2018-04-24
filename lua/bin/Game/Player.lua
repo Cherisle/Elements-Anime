@@ -22,23 +22,23 @@ function Player:new(label,row,col) -- Think of this as constructor
 	self.hp = 15 -- default HP count of any new player
 	self.ap = 0 -- default AnimePoint count of any new player
 	self.label = label -- team name of the group
-	
+
 	self.r = row -- current row of TileMap player is on
 	self.c = col -- current col of TileMap player is on
 	return self
 end
 
 --[[function Player:clickedEvent(self,mx,my)
-	if mouse_inbounds(self,mx,my) then 
-		if self:getLabel(self) == "Play" then 
+	if mouse_inbounds(self,mx,my) then
+		if self:getLabel(self) == "Play" then
 			love.audio.stop()
 			scenery.load("Play Button Scene")
-		elseif self:getLabel(self) == "Quit Game" then 
+		elseif self:getLabel(self) == "Quit Game" then
 			love.audio.stop()
 			love.event.quit()
-		elseif self:getLabel(self) == "Settings" then 
+		elseif self:getLabel(self) == "Settings" then
 			print("Settings Button pressed")
-		else   
+		else
 			print("blah")
 		end
 	end
@@ -54,6 +54,14 @@ end
 
 function Player:getLabel(self)
 	return self.label
+end
+
+function Player:getHP(self)
+	return self.hp
+end
+
+function Player:getAP(self)
+	return self.ap
 end
 
 return Player
