@@ -48,6 +48,22 @@ function Player:setHP(self,newHP)
 	self.hp = newHP
 end
 
+function Player:addHP(self, add)
+	self.hp = self.hp + add
+end
+
+function Player:subtractHP(self,subtract)
+	self.hp = self.hp - subtract
+end
+
+function Player:addAP(self, add)
+	self.ap = self.ap + add
+end
+
+function Player:subtractAP(self,subtract)
+	self.ap = self.ap - subtract
+end
+
 function Player:setAP(self,newAP)
 	self.ap = newAP
 end

@@ -17,6 +17,12 @@ local function mouse_inbounds(self,mx,my) -- checks to see if the cursor is with
 		   (my >= self:getPosY(self) and my <= self:getPosY(self) + self.h)
 end
 
+local function mouse_inboundsIMG(mx,my,imgPosX,imgPosY,imgW,imgH)
+	return (mx >= imgPosX and mx <= (imgPosX + imgW)) and
+		   (my >= imgPosY and my <= (imgPosY + imgH))
+end
+
+
 function PlayerGUI:new(x,y,w,h,label, player) -- Think of this as constructor
 	local self = setmetatable({}, PlayerGUI)
 	self.pos = Vector2:new(x or 0, y or 0) -- x and y position for the GUI of a player and maybe moved to its own class
@@ -55,6 +61,82 @@ end
 function PlayerGUI:getLabel(self)
 	return self.label
 end
+
+function PlayerGUI:addHP(self)
+	local img = love.graphics.newImage("Art Assets/black plus button.png")
+	local imgW = img:getWidth()
+	local imgH = img:getHeight()
+	if mouse_inboundsIMG(love.mouse.getX(), love.mouse.getY(), self:getPosX(self) + 125, self:getPosY(self) + 205, imgW, imgH) then
+			self.player:addHP(self.player, 1)
+		end
+end
+
+function PlayerGUI:subtractHP(self)
+	local img = love.graphics.newImage("Art Assets/black plus button.png")
+	local imgW = img:getWidth()
+	local imgH = img:getHeight()
+	if mouse_inboundsIMG(love.mouse.getX(), love.mouse.getY(), self:getPosX(self) + 155, self:getPosY(self) + 205, imgW, imgH) then
+			self.player:subtractHP(self.player, 1)
+	end
+end
+
+function PlayerGUI:addAP(self)
+	local img = love.graphics.newImage("Art Assets/black plus button.png")
+	local imgW = img:getWidth()
+	local imgH = img:getHeight()
+	if mouse_inboundsIMG(love.mouse.getX(), love.mouse.getY(), self:getPosX(self) + 185, self:getPosY(self) + 205, imgW, imgH) then
+		self.player:addAP(self.player, 1)
+	end
+end
+
+function PlayerGUI:subtractAP(self)
+	local img = love.graphics.newImage("Art Assets/black plus button.png")
+	local imgW = img:getWidth()
+	local imgH = img:getHeight()
+	if mouse_inboundsIMG(love.mouse.getX(), love.mouse.getY(), self:getPosX(self) + 215, self:getPosY(self) + 205, imgW, imgH) then
+		self.player:subtractAP(self.player, 1)
+	end
+end
+
+
+function PlayerGUI:drawStatButton(self)
+	local img = love.graphics.newImage("Art Assets/black plus button.png")
+	local imgW = img:getWidth()
+	local imgH = img:getHeight()
+
+	if mouse_inboundsIMG(love.mouse.getX(), love.mouse.getY(), self:getPosX(self) + 125, self:getPosY(self) + 205, imgW, imgH) then
+		love.graphics.draw(love.graphics.newImage("Art Assets/color plus button.png"), self:getPosX(self) + 125, self:getPosY(self) + 205)
+	else
+		love.graphics.draw(love.graphics.newImage("Art Assets/black plus button.png"), self:getPosX(self) + 125, self:getPosY(self) + 205)
+	end
+
+	if mouse_inboundsIMG(love.mouse.getX(), love.mouse.getY(), self:getPosX(self) + 155, self:getPosY(self) + 205, imgW, imgH) then
+		love.graphics.draw(love.graphics.newImage("Art Assets/color minus button.png"), self:getPosX(self) + 155, self:getPosY(self) + 205)
+	else
+		love.graphics.draw(love.graphics.newImage("Art Assets/black minus button.png"), self:getPosX(self) + 155, self:getPosY(self) + 205)
+	end
+
+	if mouse_inboundsIMG(love.mouse.getX(), love.mouse.getY(), self:getPosX(self) + 185, self:getPosY(self) + 205, imgW, imgH) then
+		love.graphics.draw(love.graphics.newImage("Art Assets/color plus button.png"), self:getPosX(self) + 185, self:getPosY(self) + 205)
+	else
+		love.graphics.draw(love.graphics.newImage("Art Assets/black plus button.png"), self:getPosX(self) + 185, self:getPosY(self) + 205)
+	end
+
+	if mouse_inboundsIMG(love.mouse.getX(), love.mouse.getY(), self:getPosX(self) + 215, self:getPosY(self) + 205, imgW, imgH) then
+		love.graphics.draw(love.graphics.newImage("Art Assets/color minus button.png"), self:getPosX(self) + 215, self:getPosY(self) + 205)
+	else
+		love.graphics.draw(love.graphics.newImage("Art Assets/black minus button.png"), self:getPosX(self) + 215, self:getPosY(self) + 205)
+	end
+
+
+
+	love.graphics.setFont(font2)
+	love.graphics.setColor(0,0,0,255)
+	love.graphics.print("HP: ", self:getPosX(self) + 130, self:getPosY(self) + 180)
+	love.graphics.print("AP: ", self:getPosX(self) + 190, self:getPosY(self) + 180)
+	love.graphics.setColor(255,255,255,255)
+end
+
 
 function PlayerGUI:drawPlayer(self)
 	font1 = love.graphics.setNewFont("Brushy_Cre.ttf",32)
@@ -95,11 +177,22 @@ function PlayerGUI:drawPlayer(self)
 
 	-- Draws the MOVE button
 	love.graphics.setFont(font4)
-	love.graphics.setColor(200,255,255,255)
-	love.graphics.rectangle("fill",self:getPosX(self) + 15,self:getPosY(self) + 200 ,self.w/ 2.5, 35)
-	love.graphics.setColor(0,0,0,255)
+
+	if mouse_inboundsIMG(love.mouse.getX(), love.mouse.getY(),self:getPosX(self) + 15, self:getPosY(self) + 200 ,self.w/ 2.5, 35) then
+		love.graphics.setColor(255,255,255,255)
+		love.graphics.rectangle("fill",self:getPosX(self) + 15,self:getPosY(self) + 200 ,self.w/ 2.5, 35)
+		love.graphics.setColor(0,0,0,255)
+	else
+		love.graphics.setColor(200,255,255,255)
+		love.graphics.rectangle("fill",self:getPosX(self) + 15,self:getPosY(self) + 200 ,self.w/ 2.5, 35)
+		love.graphics.setColor(0,0,0,255)
+	end
+
 	love.graphics.print("MOVE", self:getPosX(self) + 15 + ((self.w/ 2.5)/2) - (font4:getWidth("MOVE")/2), self:getPosY(self) + 205)
 	love.graphics.setColor(255,255,255,255)
+
+	PlayerGUI:drawStatButton(self)
+
 
 
 

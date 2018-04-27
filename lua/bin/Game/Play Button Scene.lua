@@ -224,6 +224,15 @@ function love.mousepressed(x, y, button)
 		WWBL:clikedEvent(WWBL,love.mouse.getX(),love.mouse.getY())
 		WWBR:clikedEvent(WWBR,love.mouse.getX(),love.mouse.getY())
 		Fllr:clikedEvent(Fllr,love.mouse.getX(),love.mouse.getY())
+
+		for i = 1,6,1 do
+			PlayerGUIs[i]:addHP(PlayerGUIs[i])
+			PlayerGUIs[i]:subtractHP(PlayerGUIs[i])
+			PlayerGUIs[i]:addAP(PlayerGUIs[i])
+			PlayerGUIs[i]:subtractAP(PlayerGUIs[i])
+		end
+
+
 	else if button == 2 then
 		scenery.load("MainMenu")
     end
