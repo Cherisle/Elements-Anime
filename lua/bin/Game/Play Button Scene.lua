@@ -17,12 +17,12 @@ function s.load()
 	Players[5] = Player:new("Team 5",0,0)
 	Players[6] = Player:new("Team 6",0,0)
 	PlayerGUIs = {n=6}
-	PlayerGUIs[1] = PlayerGUI:new(50,50,250,250,Players[1]:getLabel(Players[1]), Players[1])
-	PlayerGUIs[2] = PlayerGUI:new(love.graphics.getWidth() - 300,50,250,250,Players[2]:getLabel(Players[2]), Players[2])
-	PlayerGUIs[3] = PlayerGUI:new(50,350,250,250,Players[3]:getLabel(Players[3]), Players[3])
-	PlayerGUIs[4] = PlayerGUI:new(love.graphics.getWidth() - 300,350,250,250,Players[4]:getLabel(Players[4]), Players[4])
-	PlayerGUIs[5] = PlayerGUI:new(50,650,250,250,Players[5]:getLabel(Players[5]), Players[5])
-	PlayerGUIs[6] = PlayerGUI:new(love.graphics.getWidth() - 300,650,250,250,Players[6]:getLabel(Players[6]), Players[6])
+	PlayerGUIs[1] = PlayerGUI:new(50,50,250,250,Players[1]:getLabel(Players[1]), Players[1], 139, 0, 0)
+	PlayerGUIs[2] = PlayerGUI:new(love.graphics.getWidth() - 300,50,250,250,Players[2]:getLabel(Players[2]), Players[2], 147, 212, 219)
+	PlayerGUIs[3] = PlayerGUI:new(50,350,250,250,Players[3]:getLabel(Players[3]), Players[3], 0, 250, 154)
+	PlayerGUIs[4] = PlayerGUI:new(love.graphics.getWidth() - 300,350,250,250,Players[4]:getLabel(Players[4]), Players[4], 255, 255, 0)
+	PlayerGUIs[5] = PlayerGUI:new(50,650,250,250,Players[5]:getLabel(Players[5]), Players[5], 70, 30, 180)
+	PlayerGUIs[6] = PlayerGUI:new(love.graphics.getWidth() - 300,650,250,250,Players[6]:getLabel(Players[6]), Players[6], 255, 127, 80)
 	--BG = love.graphics.newImage("Beachstorm.jpg")
 
 
@@ -30,6 +30,12 @@ function s.load()
 	Nrml = Tile:new(love.graphics.newImage("Panels/General/Normal Panel.png"), true, "Nrml")
 	MoBo = Tile:new(love.graphics.newImage("Panels/General/Movement Boost Panel.png"), false, "MoBo")
 	DrwP = Tile:new(love.graphics.newImage("Panels/General/Draw Panel.png"), false, "DrwP")
+	Hom1 = Tile:new(love.graphics.newImage("Panels/General/Home Panel 1 - Hom1.png"), true, "Hom1")
+	Hom2 = Tile:new(love.graphics.newImage("Panels/General/Home Panel 2 - Hom2.png"), true, "Hom2")
+	Hom3 = Tile:new(love.graphics.newImage("Panels/General/Home Panel 3 - Hom3.png"), true, "Hom3")
+	Hom4 = Tile:new(love.graphics.newImage("Panels/General/Home Panel 4 - Hom4.png"), true, "Hom4")
+	Hom5 = Tile:new(love.graphics.newImage("Panels/General/Home Panel 5 - Hom5.png"), true, "Hom5")
+	Hom6 = Tile:new(love.graphics.newImage("Panels/General/Home Panel 6 - Hom6.png"), true, "Hom6")
 	FuSa = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Sand-Full.png"), false, "FuSa")
 	SULw = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/SandUL WaterBR.png"), false, "SULw")
 	SBLw = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/SandBL WaterUR.png"), false, "SBLw")
@@ -65,25 +71,25 @@ function s.load()
 
 	TileTable =
 	{
-     { FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),Fllr:getImage(Fllr),DrwP:getImage(DrwP),Nrml:getImage(Nrml),Nrml:getImage(Nrml),Nrml:getImage(Nrml),Nrml:getImage(Nrml),Nrml:getImage(Nrml),Nrml:getImage(Nrml),Fllr:getImage(Fllr),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa) },
-     { FuSa:getImage(FuSa),FuSa:getImage(FuSa),Fllr:getImage(Fllr),Nrml:getImage(Nrml),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),Nrml:getImage(Nrml),Fllr:getImage(Fllr),FuSa:getImage(FuSa),FuSa:getImage(FuSa) },
-     { FuSa:getImage(FuSa),Fllr:getImage(Fllr),Nrml:getImage(Nrml),FuSa:getImage(FuSa),SULw:getImage(SULw),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),SURw:getImage(SURw),Fllr:getImage(Fllr),Nrml:getImage(Nrml),Fllr:getImage(Fllr),FuSa:getImage(FuSa) },
-     { Fllr:getImage(Fllr),Nrml:getImage(Nrml),FuSa:getImage(FuSa),SULw:getImage(SULw),WWUL:getImage(WWUL),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),WWUR:getImage(WWUR),SURw:getImage(SURw),Fllr:getImage(Fllr),Nrml:getImage(Nrml),Fllr:getImage(Fllr) },
-     { DrwP:getImage(DrwP),FuSa:getImage(FuSa),SULw:getImage(SULw),WWUL:getImage(WWUL),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),WWUR:getImage(WWUR),SURw:getImage(SURw),Fllr:getImage(Fllr),Nrml:getImage(Nrml) },
-     { Nrml:getImage(Nrml),SULw:getImage(SULw),WWUL:getImage(WWUL),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),WWUR:getImage(WWUR),SURw:getImage(SURw),Nrml:getImage(Nrml) },
-     { Nrml:getImage(Nrml),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Nrml:getImage(Nrml) },
-     { Nrml:getImage(Nrml),DrwP:getImage(DrwP),Nrml:getImage(Nrml),Nrml:getImage(Nrml),Nrml:getImage(Nrml),Nrml:getImage(Nrml),MoBo:getImage(MoBo),Nrml:getImage(Nrml),MoBo:getImage(MoBo),Nrml:getImage(Nrml),Nrml:getImage(Nrml),Nrml:getImage(Nrml),Nrml:getImage(Nrml),DrwP:getImage(DrwP),Nrml:getImage(Nrml) },
-     { Nrml:getImage(Nrml),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Nrml:getImage(Nrml) },
-     { Nrml:getImage(Nrml),SBLw:getImage(SBLw),WWBL:getImage(WWBL),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),WWBR:getImage(WWBR),SBRw:getImage(SBRw),Nrml:getImage(Nrml) },
-     { Nrml:getImage(Nrml),Fllr:getImage(Fllr),SBLw:getImage(SBLw),WWBL:getImage(WWBL),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),WWBR:getImage(WWBR),SBRw:getImage(SBRw),Fllr:getImage(Fllr),DrwP:getImage(DrwP) },
-     { Fllr:getImage(Fllr),Nrml:getImage(Nrml),Fllr:getImage(Fllr),SBLw:getImage(SBLw),WWBL:getImage(WWBL),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),WWBR:getImage(WWBR),SBRw:getImage(SBRw),Fllr:getImage(Fllr),Nrml:getImage(Nrml),Fllr:getImage(Fllr) },
-     { FuSa:getImage(FuSa),Fllr:getImage(Fllr),MoBo:getImage(MoBo),Fllr:getImage(Fllr),SBLw:getImage(SBLw),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),SBRw:getImage(SBRw),Fllr:getImage(Fllr),MoBo:getImage(MoBo),Fllr:getImage(Fllr),FuSa:getImage(FuSa) },
-     { FuSa:getImage(FuSa),FuSa:getImage(FuSa),Fllr:getImage(Fllr),Nrml:getImage(Nrml),Fllr:getImage(Fllr),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),Fllr:getImage(Fllr),Nrml:getImage(Nrml),Fllr:getImage(Fllr),FuSa:getImage(FuSa),FuSa:getImage(FuSa) },
-     { FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),Fllr:getImage(Fllr),Nrml:getImage(Nrml),DrwP:getImage(DrwP),Nrml:getImage(Nrml),Nrml:getImage(Nrml),DrwP:getImage(DrwP),Nrml:getImage(Nrml),Nrml:getImage(Nrml),Fllr:getImage(Fllr),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa) }
+     { FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),Fllr:getImage(Fllr),DrwP:getImage(DrwP),Nrml:getImage(Nrml),Nrml:getImage(Nrml),Hom5:getImage(Hom5),Nrml:getImage(Nrml),Nrml:getImage(Nrml),Nrml:getImage(Nrml),Fllr:getImage(Fllr),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa) }, -- 1
+     { FuSa:getImage(FuSa),FuSa:getImage(FuSa),Fllr:getImage(Fllr),Nrml:getImage(Nrml),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),Nrml:getImage(Nrml),Fllr:getImage(Fllr),FuSa:getImage(FuSa),FuSa:getImage(FuSa) }, -- 2
+     { FuSa:getImage(FuSa),Fllr:getImage(Fllr),Nrml:getImage(Nrml),FuSa:getImage(FuSa),SULw:getImage(SULw),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),SURw:getImage(SURw),Fllr:getImage(Fllr),Nrml:getImage(Nrml),Fllr:getImage(Fllr),FuSa:getImage(FuSa) }, -- 3
+     { Fllr:getImage(Fllr),Nrml:getImage(Nrml),FuSa:getImage(FuSa),SULw:getImage(SULw),WWUL:getImage(WWUL),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),WWUR:getImage(WWUR),SURw:getImage(SURw),Fllr:getImage(Fllr),Nrml:getImage(Nrml),Fllr:getImage(Fllr) }, -- 4
+     { DrwP:getImage(DrwP),FuSa:getImage(FuSa),SULw:getImage(SULw),WWUL:getImage(WWUL),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),WWUR:getImage(WWUR),SURw:getImage(SURw),Fllr:getImage(Fllr),Nrml:getImage(Nrml) }, -- 5
+     { Hom4:getImage(Hom4),SULw:getImage(SULw),WWUL:getImage(WWUL),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),WWUR:getImage(WWUR),SURw:getImage(SURw),Nrml:getImage(Nrml) }, -- 6
+     { Nrml:getImage(Nrml),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Nrml:getImage(Nrml) }, -- 7
+     { Nrml:getImage(Nrml),DrwP:getImage(DrwP),Nrml:getImage(Nrml),Nrml:getImage(Nrml),Nrml:getImage(Nrml),Hom6:getImage(Hom6),MoBo:getImage(MoBo),Nrml:getImage(Nrml),MoBo:getImage(MoBo),Hom1:getImage(Hom1),Nrml:getImage(Nrml),Nrml:getImage(Nrml),Nrml:getImage(Nrml),DrwP:getImage(DrwP),Nrml:getImage(Nrml) }, -- 8
+     { Nrml:getImage(Nrml),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Hom2:getImage(Hom2) }, -- 9
+     { Nrml:getImage(Nrml),SBLw:getImage(SBLw),WWBL:getImage(WWBL),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),WWBR:getImage(WWBR),SBRw:getImage(SBRw),Nrml:getImage(Nrml) }, -- 10
+     { Nrml:getImage(Nrml),Fllr:getImage(Fllr),SBLw:getImage(SBLw),WWBL:getImage(WWBL),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),WWBR:getImage(WWBR),SBRw:getImage(SBRw),Fllr:getImage(Fllr),DrwP:getImage(DrwP) }, -- 11
+     { Fllr:getImage(Fllr),Nrml:getImage(Nrml),Fllr:getImage(Fllr),SBLw:getImage(SBLw),WWBL:getImage(WWBL),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),WWBR:getImage(WWBR),SBRw:getImage(SBRw),Fllr:getImage(Fllr),Nrml:getImage(Nrml),Fllr:getImage(Fllr) }, -- 12
+     { FuSa:getImage(FuSa),Fllr:getImage(Fllr),MoBo:getImage(MoBo),Fllr:getImage(Fllr),SBLw:getImage(SBLw),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),SBRw:getImage(SBRw),Fllr:getImage(Fllr),MoBo:getImage(MoBo),Fllr:getImage(Fllr),FuSa:getImage(FuSa) }, -- 13
+     { FuSa:getImage(FuSa),FuSa:getImage(FuSa),Fllr:getImage(Fllr),Nrml:getImage(Nrml),Fllr:getImage(Fllr),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),Fllr:getImage(Fllr),Nrml:getImage(Nrml),Fllr:getImage(Fllr),FuSa:getImage(FuSa),FuSa:getImage(FuSa) }, -- 14
+     { FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),Fllr:getImage(Fllr),Nrml:getImage(Nrml),DrwP:getImage(DrwP),Nrml:getImage(Nrml),Hom3:getImage(Hom3),DrwP:getImage(DrwP),Nrml:getImage(Nrml),Nrml:getImage(Nrml),Fllr:getImage(Fllr),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa) } -- 15
 	}
 
-	tileLocCounter = {n = 14}
-	for i = 1, 14, 1 do
+	tileLocCounter = {n = 20}
+	for i = 1, 20, 1 do
 		tileLocCounter[i] = 0;
 	end
 
@@ -150,6 +156,30 @@ function s.load()
 			elseif (identifier == Fllr:getImage(Fllr)) then
 				tileLocCounter[14] = tileLocCounter[14] + 1
 				Fllr:setTileLoc(Fllr, tileLocCounter[14],x,y)
+
+			elseif (identifier == Hom1:getImage(Hom1)) then
+				tileLocCounter[15] = tileLocCounter[15] + 1
+				Hom1:setTileLoc(Hom1, tileLocCounter[15],x,y)
+
+			elseif (identifier == Hom2:getImage(Hom2)) then
+				tileLocCounter[16] = tileLocCounter[16] + 1
+				Hom2:setTileLoc(Hom2, tileLocCounter[16],x,y)
+
+			elseif (identifier == Hom3:getImage(Hom3)) then
+				tileLocCounter[17] = tileLocCounter[17] + 1
+				Hom3:setTileLoc(Hom3, tileLocCounter[17],x,y)
+
+			elseif (identifier == Hom4:getImage(Hom4)) then
+				tileLocCounter[18] = tileLocCounter[18] + 1
+				Hom4:setTileLoc(Hom4, tileLocCounter[18],x,y)
+
+			elseif (identifier == Hom5:getImage(Hom5)) then
+				tileLocCounter[19] = tileLocCounter[19] + 1
+				Hom5:setTileLoc(Hom5, tileLocCounter[19],x,y)
+
+			elseif (identifier == Hom6:getImage(Hom6)) then
+				tileLocCounter[20] = tileLocCounter[20] + 1
+				Hom6:setTileLoc(Hom6, tileLocCounter[20],x,y)
 			end
 
 		end
@@ -213,6 +243,7 @@ function love.mousepressed(x, y, button)
 	if button == 1 then
 		Nrml:clikedEvent(Nrml, love.mouse.getX(), love.mouse.getY())
 		DrwP:clikedEvent(DrwP,love.mouse.getX(),love.mouse.getY())
+		MoBo:clikedEvent(MoBo,love.mouse.getX(),love.mouse.getY())
 		FuSa:clikedEvent(FuSa,love.mouse.getX(),love.mouse.getY())
 		SULw:clikedEvent(SULw,love.mouse.getX(),love.mouse.getY())
 		SBLw:clikedEvent(SBLw,love.mouse.getX(),love.mouse.getY())
@@ -224,6 +255,12 @@ function love.mousepressed(x, y, button)
 		WWBL:clikedEvent(WWBL,love.mouse.getX(),love.mouse.getY())
 		WWBR:clikedEvent(WWBR,love.mouse.getX(),love.mouse.getY())
 		Fllr:clikedEvent(Fllr,love.mouse.getX(),love.mouse.getY())
+		Hom1:clikedEvent(Hom1,love.mouse.getX(),love.mouse.getY())
+		Hom2:clikedEvent(Hom2,love.mouse.getX(),love.mouse.getY())
+		Hom3:clikedEvent(Hom3,love.mouse.getX(),love.mouse.getY())
+		Hom4:clikedEvent(Hom4,love.mouse.getX(),love.mouse.getY())
+		Hom5:clikedEvent(Hom5,love.mouse.getX(),love.mouse.getY())
+		Hom6:clikedEvent(Hom6,love.mouse.getX(),love.mouse.getY())
 
 		for i = 1,6,1 do
 			PlayerGUIs[i]:addHP(PlayerGUIs[i])

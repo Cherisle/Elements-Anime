@@ -23,13 +23,16 @@ local function mouse_inboundsIMG(mx,my,imgPosX,imgPosY,imgW,imgH)
 end
 
 
-function PlayerGUI:new(x,y,w,h,label, player) -- Think of this as constructor
+function PlayerGUI:new(x,y,w,h,label, player,r,g,b) -- Think of this as constructor
 	local self = setmetatable({}, PlayerGUI)
 	self.pos = Vector2:new(x or 0, y or 0) -- x and y position for the GUI of a player and maybe moved to its own class
 	self.w = w -- width for GUI of player, should be fixed value and maybe moved to its own class
 	self.h = h -- height for GUI of player, should be fixed value and maybe moved to its own class
 	self.label = label -- Name of the associated Player/Group to the GUI
 	self.player = player
+	self.r = r
+	self.g = g
+	self.b = b
 	return self
 end
 
@@ -192,6 +195,10 @@ function PlayerGUI:drawPlayer(self)
 	love.graphics.setColor(255,255,255,255)
 
 	PlayerGUI:drawStatButton(self)
+
+	love.graphics.setColor(self.r, self.g, self.b, 255)
+	love.graphics.circle("fill", self:getPosX(self) + 195, self:getPosY(self) + 90, 20)
+	love.graphics.setColor(255,255,255,255)
 
 
 

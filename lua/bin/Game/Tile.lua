@@ -23,7 +23,7 @@ function Tile:new(image, active, name)
   self.label = name
   self.tileWidth = 60
   self.tileHeight = 60
-  self.playerOnTile = {}
+  self.tileMap = TileMaps:new()
   --self.pos = Vector2:new(0,0)
   self.tileLoc = {}
 
@@ -56,6 +56,7 @@ function Tile:isHovered(self,mx,my)
 
 function Tile:setTileLoc(self, arrayNum, xLoc, yLoc)
   self.tileLoc[arrayNum] = Vector2:new(xLoc or 0, yLoc or 0)
+  
 end
 
 function Tile:getPosX(self, loc)
