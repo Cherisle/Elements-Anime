@@ -17,19 +17,19 @@ function s.load()
 	Players[5] = Player:new("Team 5",0,0)
 	Players[6] = Player:new("Team 6",0,0)
 	PlayerGUIs = {n=6}
-	PlayerGUIs[1] = PlayerGUI:new(50,50,250,250,Players[1]:getLabel(Players[1]), Players[1], 139, 0, 0)
-	PlayerGUIs[2] = PlayerGUI:new(love.graphics.getWidth() - 300,50,250,250,Players[2]:getLabel(Players[2]), Players[2], 147, 212, 219)
-	PlayerGUIs[3] = PlayerGUI:new(50,350,250,250,Players[3]:getLabel(Players[3]), Players[3], 0, 250, 154)
-	PlayerGUIs[4] = PlayerGUI:new(love.graphics.getWidth() - 300,350,250,250,Players[4]:getLabel(Players[4]), Players[4], 255, 255, 0)
-	PlayerGUIs[5] = PlayerGUI:new(50,650,250,250,Players[5]:getLabel(Players[5]), Players[5], 70, 30, 180)
-	PlayerGUIs[6] = PlayerGUI:new(love.graphics.getWidth() - 300,650,250,250,Players[6]:getLabel(Players[6]), Players[6], 255, 127, 80)
+	PlayerGUIs[1] = PlayerGUI:new(50,50,250,250,Players[1]:getLabel(Players[1]), Players[1], 255, 0, 0)
+	PlayerGUIs[2] = PlayerGUI:new(love.graphics.getWidth() - 300,50,250,250,Players[2]:getLabel(Players[2]), Players[2], 74, 134, 232)
+	PlayerGUIs[3] = PlayerGUI:new(50,350,250,250,Players[3]:getLabel(Players[3]), Players[3], 106, 168, 79)
+	PlayerGUIs[4] = PlayerGUI:new(love.graphics.getWidth() - 300,350,250,250,Players[4]:getLabel(Players[4]), Players[4], 255, 217, 102)
+	PlayerGUIs[5] = PlayerGUI:new(50,650,250,250,Players[5]:getLabel(Players[5]), Players[5], 145, 0, 255)
+	PlayerGUIs[6] = PlayerGUI:new(love.graphics.getWidth() - 300,650,250,250,Players[6]:getLabel(Players[6]), Players[6], 255, 255, 255)
 	--BG = love.graphics.newImage("Beachstorm.jpg")
 
 
 
 	Nrml = Tile:new(love.graphics.newImage("Panels/General/Normal Panel.png"), true, "Nrml")
-	MoBo = Tile:new(love.graphics.newImage("Panels/General/Movement Boost Panel.png"), false, "MoBo")
-	DrwP = Tile:new(love.graphics.newImage("Panels/General/Draw Panel.png"), false, "DrwP")
+	MoBo = Tile:new(love.graphics.newImage("Panels/General/Movement Boost Panel.png"), true, "MoBo")
+	DrwP = Tile:new(love.graphics.newImage("Panels/General/Draw Panel.png"), true, "DrwP")
 	Hom1 = Tile:new(love.graphics.newImage("Panels/General/Home Panel 1 - Hom1.png"), true, "Hom1")
 	Hom2 = Tile:new(love.graphics.newImage("Panels/General/Home Panel 2 - Hom2.png"), true, "Hom2")
 	Hom3 = Tile:new(love.graphics.newImage("Panels/General/Home Panel 3 - Hom3.png"), true, "Hom3")
@@ -104,14 +104,17 @@ function s.load()
 			if (identifier == Nrml:getImage(Nrml)) then
 				tileLocCounter[1] = tileLocCounter[1] + 1
 				Nrml:setTileLoc(Nrml, tileLocCounter[1],x,y)
+				Nrml:addToTileMaps(Nrml,x,y)
 
 			elseif (identifier == MoBo:getImage(MoBo)) then
 				tileLocCounter[2] = tileLocCounter[2] + 1
 				MoBo:setTileLoc(MoBo, tileLocCounter[2],x,y)
+				MoBo:addToTileMaps(MoBo,x,y)
 
 			elseif (identifier == DrwP:getImage(DrwP)) then
 				tileLocCounter[3] = tileLocCounter[3] + 1
 				DrwP:setTileLoc(DrwP, tileLocCounter[3],x,y)
+				DrwP:addToTileMaps(DrwP,x,y)
 
 			elseif (identifier == FuSa:getImage(FuSa)) then
 				tileLocCounter[4] = tileLocCounter[4] + 1
@@ -160,29 +163,46 @@ function s.load()
 			elseif (identifier == Hom1:getImage(Hom1)) then
 				tileLocCounter[15] = tileLocCounter[15] + 1
 				Hom1:setTileLoc(Hom1, tileLocCounter[15],x,y)
+				Hom1:addToTileMaps(Hom1,x,y)
+				Hom1:addPlayer(Hom1, 1, PlayerGUIs[1])
 
 			elseif (identifier == Hom2:getImage(Hom2)) then
 				tileLocCounter[16] = tileLocCounter[16] + 1
 				Hom2:setTileLoc(Hom2, tileLocCounter[16],x,y)
+				Hom2:addToTileMaps(Hom2,x,y)
+				Hom2:addPlayer(Hom2, 1, PlayerGUIs[2])
 
 			elseif (identifier == Hom3:getImage(Hom3)) then
 				tileLocCounter[17] = tileLocCounter[17] + 1
 				Hom3:setTileLoc(Hom3, tileLocCounter[17],x,y)
+				Hom3:addToTileMaps(Hom3,x,y)
+				Hom3:addPlayer(Hom3, 1, PlayerGUIs[3])
 
 			elseif (identifier == Hom4:getImage(Hom4)) then
 				tileLocCounter[18] = tileLocCounter[18] + 1
 				Hom4:setTileLoc(Hom4, tileLocCounter[18],x,y)
+				Hom4:addToTileMaps(Hom4,x,y)
+				Hom4:addPlayer(Hom4, 1, PlayerGUIs[4])
 
 			elseif (identifier == Hom5:getImage(Hom5)) then
 				tileLocCounter[19] = tileLocCounter[19] + 1
 				Hom5:setTileLoc(Hom5, tileLocCounter[19],x,y)
+				Hom5:addToTileMaps(Hom5,x,y)
+				Hom5:addPlayer(Hom5, 1, PlayerGUIs[5])
 
 			elseif (identifier == Hom6:getImage(Hom6)) then
 				tileLocCounter[20] = tileLocCounter[20] + 1
 				Hom6:setTileLoc(Hom6, tileLocCounter[20],x,y)
+				Hom6:addToTileMaps(Hom6,x,y)
+				Hom6:addPlayer(Hom6, 1, PlayerGUIs[6])
 			end
 
 		end
+
+
+
+
+
 
 	--font1 = love.graphics.setNewFont("Fonts/Brushaff.otf", 64)
 	font1 = love.graphics.setNewFont("Brushaff.otf",64)
@@ -210,12 +230,23 @@ function s.draw()
 	PlayerGUIs[5]:drawPlayer(PlayerGUIs[5])
 	PlayerGUIs[6]:drawPlayer(PlayerGUIs[6])
 
-	PlayerGUIs[1]:isHovered(PlayerGUIs[1],love.mouse.getX(),love.mouse.getY())
-	PlayerGUIs[2]:isHovered(PlayerGUIs[2],love.mouse.getX(),love.mouse.getY())
-	PlayerGUIs[3]:isHovered(PlayerGUIs[3],love.mouse.getX(),love.mouse.getY())
-	PlayerGUIs[4]:isHovered(PlayerGUIs[4],love.mouse.getX(),love.mouse.getY())
-	PlayerGUIs[5]:isHovered(PlayerGUIs[5],love.mouse.getX(),love.mouse.getY())
-	PlayerGUIs[6]:isHovered(PlayerGUIs[6],love.mouse.getX(),love.mouse.getY())
+	--PlayerGUIs[1]:isHovered(PlayerGUIs[1],love.mouse.getX(),love.mouse.getY())
+--	PlayerGUIs[2]:isHovered(PlayerGUIs[2],love.mouse.getX(),love.mouse.getY())
+--	PlayerGUIs[3]:isHovered(PlayerGUIs[3],love.mouse.getX(),love.mouse.getY())
+--	PlayerGUIs[4]:isHovered(PlayerGUIs[4],love.mouse.getX(),love.mouse.getY())
+--	PlayerGUIs[5]:isHovered(PlayerGUIs[5],love.mouse.getX(),love.mouse.getY())
+--	PlayerGUIs[6]:isHovered(PlayerGUIs[6],love.mouse.getX(),love.mouse.getY())
+
+	Nrml:drawPlayerOnTile(Nrml)
+	DrwP:drawPlayerOnTile(DrwP)
+	MoBo:drawPlayerOnTile(MoBo)
+	Hom1:drawPlayerOnTile(Hom1)
+	Hom2:drawPlayerOnTile(Hom2)
+	Hom3:drawPlayerOnTile(Hom3)
+	Hom4:drawPlayerOnTile(Hom4)
+	Hom5:drawPlayerOnTile(Hom5)
+	Hom6:drawPlayerOnTile(Hom6)
+
 
 
 	--[[Nrml:isHovered(Nrml,love.mouse.getX(),love.mouse.getY())
@@ -240,6 +271,7 @@ function s.update(dt)
 end
 
 function love.mousepressed(x, y, button)
+	choose = false
 	if button == 1 then
 		Nrml:clikedEvent(Nrml, love.mouse.getX(), love.mouse.getY())
 		DrwP:clikedEvent(DrwP,love.mouse.getX(),love.mouse.getY())
@@ -267,12 +299,13 @@ function love.mousepressed(x, y, button)
 			PlayerGUIs[i]:subtractHP(PlayerGUIs[i])
 			PlayerGUIs[i]:addAP(PlayerGUIs[i])
 			PlayerGUIs[i]:subtractAP(PlayerGUIs[i])
-		end
-
+			choose = PlayerGUIs[i]:moveEvent(PlayerGUIs[i])
+			end
 
 	else if button == 2 then
 		scenery.load("MainMenu")
-    end
+    	end
+		end
+
 	end
-end
 end

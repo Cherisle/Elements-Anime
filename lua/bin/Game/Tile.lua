@@ -52,11 +52,22 @@ function Tile:isHovered(self,mx,my)
         print(self.label.. " panel was pressed" )
       end
     end
+    return false
   end
+
+
 
 function Tile:setTileLoc(self, arrayNum, xLoc, yLoc)
   self.tileLoc[arrayNum] = Vector2:new(xLoc or 0, yLoc or 0)
-  
+
+  -- Fills the TileMaps with all the specific tile locations
+
+end
+
+function Tile:addToTileMaps(self, xLoc, yLoc)
+  --print(self.label)
+  location = Vector2:new(xLoc or 0, yLoc or 0)
+  self.tileMap:addTileLoc(self.tileMap, location)
 end
 
 function Tile:getPosX(self, loc)
@@ -67,6 +78,14 @@ end
 function Tile:getPosY(self, loc)
   return self.tileLoc[loc]:getY()
   --return self.pos:getY()
+end
+
+function Tile:addPlayer(self, tileLoc, player)
+    self.tileMap:addPlayerOnTile(self.tileMap, tileLoc, player)
+end
+
+function Tile:drawPlayerOnTile(self)
+  self.tileMap:drawPlayers(self.tileMap)
 end
 
 --[[

@@ -40,6 +40,7 @@ function PlayerGUI:clickedEvent(self,mx,my)
 	if mouse_inbounds(self,mx,my) then
 		print(self.label.." was clicked")
 	end
+	return true
 end
 
 function PlayerGUI:isHovered(self,mx,my) -- acts as draw, color when hovered vs color when not hovered
@@ -140,6 +141,31 @@ function PlayerGUI:drawStatButton(self)
 	love.graphics.setColor(255,255,255,255)
 end
 
+function PlayerGUI:moveEvent(self)
+	if mouse_inboundsIMG(love.mouse.getX(), love.mouse.getY(),self:getPosX(self) + 15, self:getPosY(self) + 200 ,self.w/ 2.5, 35) then
+		love.graphics.setColor(255,255,255,255)
+		love.graphics.rectangle("fill",self:getPosX(self) + 15,self:getPosY(self) + 200 ,self.w/ 2.5, 35)
+		love.graphics.setColor(255,255,255,255)
+	end
+	return true
+
+end
+
+function PlayerGUI:drawMoveButton(self)
+	love.graphics.setFont(font4)
+	if mouse_inboundsIMG(love.mouse.getX(), love.mouse.getY(),self:getPosX(self) + 15, self:getPosY(self) + 200 ,self.w/ 2.5, 35) then
+		love.graphics.setColor(255,255,255,255)
+		love.graphics.rectangle("fill",self:getPosX(self) + 15,self:getPosY(self) + 200 ,self.w/ 2.5, 35)
+		love.graphics.setColor(0,0,0,255)
+	else
+		love.graphics.setColor(200,255,255,255)
+		love.graphics.rectangle("fill",self:getPosX(self) + 15,self:getPosY(self) + 200 ,self.w/ 2.5, 35)
+		love.graphics.setColor(0,0,0,255)
+	end
+	love.graphics.print("MOVE", self:getPosX(self) + 15 + ((self.w/ 2.5)/2) - (font4:getWidth("MOVE")/2), self:getPosY(self) + 205)
+	love.graphics.setColor(255,255,255,255)
+end
+
 
 function PlayerGUI:drawPlayer(self)
 	font1 = love.graphics.setNewFont("Brushy_Cre.ttf",32)
@@ -179,30 +205,26 @@ function PlayerGUI:drawPlayer(self)
 	love.graphics.setColor(255,255,255,255)
 
 	-- Draws the MOVE button
-	love.graphics.setFont(font4)
 
-	if mouse_inboundsIMG(love.mouse.getX(), love.mouse.getY(),self:getPosX(self) + 15, self:getPosY(self) + 200 ,self.w/ 2.5, 35) then
-		love.graphics.setColor(255,255,255,255)
-		love.graphics.rectangle("fill",self:getPosX(self) + 15,self:getPosY(self) + 200 ,self.w/ 2.5, 35)
-		love.graphics.setColor(0,0,0,255)
-	else
-		love.graphics.setColor(200,255,255,255)
-		love.graphics.rectangle("fill",self:getPosX(self) + 15,self:getPosY(self) + 200 ,self.w/ 2.5, 35)
-		love.graphics.setColor(0,0,0,255)
-	end
-
-	love.graphics.print("MOVE", self:getPosX(self) + 15 + ((self.w/ 2.5)/2) - (font4:getWidth("MOVE")/2), self:getPosY(self) + 205)
-	love.graphics.setColor(255,255,255,255)
+	PlayerGUI:drawMoveButton(self)
 
 	PlayerGUI:drawStatButton(self)
 
 	love.graphics.setColor(self.r, self.g, self.b, 255)
 	love.graphics.circle("fill", self:getPosX(self) + 195, self:getPosY(self) + 90, 20)
 	love.graphics.setColor(255,255,255,255)
+end
 
+function PlayerGUI:getR(self)
+	return self.r
+end
 
+function PlayerGUI:getG(self)
+	return self.g
+end
 
-
+function PlayerGUI:getB(self)
+	return self.b
 end
 
 return PlayerGUI
