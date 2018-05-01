@@ -1,5 +1,6 @@
 require "scenery"
 ui = require "loveui/ui"
+mainScript = require "main"
 local PlayerGUI = require "PlayerGUI"
 local Player = require "Player"
 local Tile = require "Tile"
@@ -23,7 +24,6 @@ function s.load()
 	PlayerGUIs[4] = PlayerGUI:new(love.graphics.getWidth() - 300,350,250,250,Players[4]:getLabel(Players[4]), Players[4], 255, 217, 102)
 	PlayerGUIs[5] = PlayerGUI:new(50,650,250,250,Players[5]:getLabel(Players[5]), Players[5], 145, 0, 255)
 	PlayerGUIs[6] = PlayerGUI:new(love.graphics.getWidth() - 300,650,250,250,Players[6]:getLabel(Players[6]), Players[6], 255, 255, 255)
-	--BG = love.graphics.newImage("Beachstorm.jpg")
 
 
 
@@ -47,25 +47,6 @@ function s.load()
 	WWBL = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Water WaveBL.png"), false, "WWBL")
 	WWBR = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Water WaveBR.png"), false, "WWBR")
 	Fllr = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Filler Panel.png"), false, "Fllr")
-
-	--[[
-	Nrml = love.graphics.newImage("Panels/General/Normal Panel.png")
-
-	Mo-Bo = love.graphics.newImage("Panels/General/Movement Boost Panel.png")
-	Dr-wP = love.graphics.newImage("Panels/General/Draw Panel.png")
-	Fu-Sa = love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Sand-Full.png")
-	SU-Lw = love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/SandUL WaterBR.png")
-	SB-Lw = love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/SandBL WaterUR.png")
-	SU-Rw = love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/SandUR WaterBL.png")
-	SB-Rw = love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/SandBR WaterUL.png")
-	Wt-rP = love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Water Panel.png")
-	WW-UL = love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Water WaveUL.png")
-	WW-UR = love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Water WaveUR.png")
-	WW-BL = love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Water WaveBL.png")
-	WW-BR = love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Water WaveBR.png")
-	Fl-lr = love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Filler Panel.png")]]
-
-
 
 	TileW, TileH = 60,60
 
@@ -293,6 +274,11 @@ function love.mousepressed(x, y, button)
 		Hom4:clikedEvent(Hom4,love.mouse.getX(),love.mouse.getY())
 		Hom5:clikedEvent(Hom5,love.mouse.getX(),love.mouse.getY())
 		Hom6:clikedEvent(Hom6,love.mouse.getX(),love.mouse.getY())
+	if button == 2 then
+		_G.counter = 2
+		scenery.load("MainMenu")
+    end
+end
 
 		for i = 1,6,1 do
 			PlayerGUIs[i]:addHP(PlayerGUIs[i])

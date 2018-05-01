@@ -1,4 +1,5 @@
 require "scenery"
+_G.counter = 1
 
 function love.load()
 	scenery.load("MainMenu")
