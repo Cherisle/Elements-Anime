@@ -278,7 +278,7 @@ function love.mousepressed(x, y, button)
 		_G.counter = 2
 		scenery.load("MainMenu")
     end
-end
+
 
 		for i = 1,6,1 do
 			PlayerGUIs[i]:addHP(PlayerGUIs[i])
