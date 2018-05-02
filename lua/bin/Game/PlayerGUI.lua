@@ -34,7 +34,8 @@ function PlayerGUI:new(x,y,w,h,label, player,r,g,b) -- Think of this as construc
 	self.g = g
 	self.b = b
 	self.moveButtonColor = 200
-	self.locationFromTile = 0;
+	self.locationFromTile = 0
+	self.tileType = 0
 	return self
 end
 
@@ -144,12 +145,13 @@ function PlayerGUI:drawStatButton(self)
 end
 
 function PlayerGUI:moveEvent(self)
-	bool = false
+
 	if mouse_inboundsIMG(love.mouse.getX(), love.mouse.getY(),self:getPosX(self) + 15, self:getPosY(self) + 200 ,self.w/ 2.5, 35) then
 		self.moveButtonColor = 255
-		bool = true
+		--print("goes through here")
+		return true
 	end
-	return bool
+
 
 end
 
@@ -227,6 +229,27 @@ end
 
 function PlayerGUI:getB(self)
 	return self.b
+end
+
+function PlayerGUI:changeMoveColorBack(self)
+	self.moveButtonColor = 200
+end
+
+function PlayerGUI:setTileLoc(self, l, t)
+	self.locationFromTile = l
+	self.tileType = t
+end
+
+function PlayerGUI:getTileLoc(self)
+	return self.locationFromTile
+end
+
+function PlayerGUI:getTileType(self)
+	return self.tileType
+end
+
+function PlayerGUI:setTileType(self, t)
+	self.tileType = t
 end
 
 return PlayerGUI
