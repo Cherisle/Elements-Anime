@@ -33,6 +33,8 @@ function PlayerGUI:new(x,y,w,h,label, player,r,g,b) -- Think of this as construc
 	self.r = r
 	self.g = g
 	self.b = b
+	self.moveButtonColor = 200
+	self.locationFromTile = 0;
 	return self
 end
 
@@ -142,12 +144,12 @@ function PlayerGUI:drawStatButton(self)
 end
 
 function PlayerGUI:moveEvent(self)
+	bool = false
 	if mouse_inboundsIMG(love.mouse.getX(), love.mouse.getY(),self:getPosX(self) + 15, self:getPosY(self) + 200 ,self.w/ 2.5, 35) then
-		love.graphics.setColor(255,255,255,255)
-		love.graphics.rectangle("fill",self:getPosX(self) + 15,self:getPosY(self) + 200 ,self.w/ 2.5, 35)
-		love.graphics.setColor(255,255,255,255)
+		self.moveButtonColor = 255
+		bool = true
 	end
-	return true
+	return bool
 
 end
 
@@ -158,7 +160,7 @@ function PlayerGUI:drawMoveButton(self)
 		love.graphics.rectangle("fill",self:getPosX(self) + 15,self:getPosY(self) + 200 ,self.w/ 2.5, 35)
 		love.graphics.setColor(0,0,0,255)
 	else
-		love.graphics.setColor(200,255,255,255)
+		love.graphics.setColor(self.moveButtonColor,255,255,255)
 		love.graphics.rectangle("fill",self:getPosX(self) + 15,self:getPosY(self) + 200 ,self.w/ 2.5, 35)
 		love.graphics.setColor(0,0,0,255)
 	end
