@@ -50,6 +50,7 @@ function s.load()
 	Fllr = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Filler Panel.png"), false, "Fllr")
 
 	TileW, TileH = 60,60
+	-- FIXED 
 
 	TileTable =
 	{
