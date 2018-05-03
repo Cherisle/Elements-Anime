@@ -58,18 +58,21 @@ end
 
 function TileMaps:addPlayerOnTile(self, tileLoc, player)
   loc = 0
-  --print(table.getn(self.key))
-
+--  print(table.getn(self.key))
   if (table.getn(self.key) > 1) then
   for i = 1, table.getn(self.key), 1 do
-    print("")
-    --print("Tile in the function", tileLoc:getX(), tileLoc:getY())
-  --  print(i, self.key[i]:getX(), self.key[i]:getY())
+
+  
+
     if (tileLoc:getX() == self.key[i]:getX()) then
       if(tileLoc:getY() == self.key[i]:getY()) then
-      --  print("ASDASD")
+
         loc = i
       end
+
+    if (tileLoc == self.key[i]) then
+      loc = i
+
     end
   end
 else
@@ -80,26 +83,16 @@ end
 
   self.numOfPlayers[loc] = self.numOfPlayers[loc] + 1
   self.dataType[loc][self.numOfPlayers[loc]] = player
-
 end
 
 function TileMaps:removePlayerOnTile(self, tileLoc, player)
-  --print("GOES THROUGH HERES")
   loc = 0
   locPlayer = 0
-  if (table.getn(self.key) > 1) then
   for i = 1, table.getn(self.key), 1 do
-    if (tileLoc:getX() == self.key[i]:getX()) then
-      if(tileLoc:getY() == self.key[i]:getY()) then
-        loc = i
-      end
+    if (tileLoc == self.key[i]) then
+      loc = i
     end
   end
-else
-  loc = 1
-end
-
-  print(table.getn(self.dataType[loc]))
   for j = 1, table.getn(self.dataType[loc]), 1 do
     --print("Player label: ",player:getLabel(player), "Compare Label: ", )
     if (player:getLabel(player) == self.dataType[loc][j]:getLabel(self.dataType[loc][j])) then
@@ -111,7 +104,6 @@ end
   print("location of Player: ", locPlayer)
 
   table.remove(self.dataType[loc], locPlayer)
-  self.numOfPlayers[loc] = self.numOfPlayers[loc] - 1
 end
 
 function TileMaps:drawPlayers(self)
@@ -139,7 +131,7 @@ function TileMaps:drawPlayers(self)
       love.graphics.circle("fill", self.key[i]:getX() + 30 , self.key[i]:getY() + 30 , 9)
 
       love.graphics.setColor(self.dataType[i][3]:getR(self.dataType[i][3]),self.dataType[i][3]:getG(self.dataType[i][3]),self.dataType[i][3]:getB(self.dataType[i][3]), 255)
-      love.graphics.circle("fill", self.key[i]:getX() + 50 , self.key[i]:getY() + 30 , 9)
+      love.graphics.circle("fill", self.key[i]:getX() + 45 , self.key[i]:getY() + 30 , 9)
       love.graphics.setColor(255,255,255,255)
     end
 
@@ -184,7 +176,7 @@ function TileMaps:drawPlayers(self)
       love.graphics.circle("fill", self.key[i]:getX() + 30 , self.key[i]:getY() + 15 , 9)
 
       love.graphics.setColor(self.dataType[i][3]:getR(self.dataType[i][3]),self.dataType[i][3]:getG(self.dataType[i][3]),self.dataType[i][3]:getB(self.dataType[i][3]), 255)
-      love.graphics.circle("fill", self.key[i]:getX() + 50 , self.key[i]:getY() + 15 , 9)
+      love.graphics.circle("fill", self.key[i]:getX() + 45 , self.key[i]:getY() + 15 , 9)
 
       love.graphics.setColor(self.dataType[i][4]:getR(self.dataType[i][4]),self.dataType[i][4]:getG(self.dataType[i][4]),self.dataType[i][4]:getB(self.dataType[i][4]), 255)
       love.graphics.circle("fill", self.key[i]:getX() + 10 , self.key[i]:getY() + 45 , 9)
@@ -193,7 +185,7 @@ function TileMaps:drawPlayers(self)
       love.graphics.circle("fill", self.key[i]:getX() + 30 , self.key[i]:getY() + 45 , 9)
 
       love.graphics.setColor(self.dataType[i][6]:getR(self.dataType[i][6]),self.dataType[i][6]:getG(self.dataType[i][6]),self.dataType[i][6]:getB(self.dataType[i][6]), 255)
-      love.graphics.circle("fill", self.key[i]:getX() + 50 , self.key[i]:getY() + 45 , 9)
+      love.graphics.circle("fill", self.key[i]:getX() + 45 , self.key[i]:getY() + 45 , 9)
 
       love.graphics.setColor(255,255,255,255)
     end

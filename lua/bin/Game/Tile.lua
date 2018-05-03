@@ -44,28 +44,18 @@ function Tile:isHovered(self,mx,my)
       end
     end
 
-end
-
-function Tile:clikedEvent(self, mx,my)
-  for i = 1, table.getn(self.tileLoc),1 do
-    if mouse_inbounds(self, mx,my,i) then
-      print(self.label.. " panel was pressed" )
-    end
   end
-  return false
-end
 
-function Tile:clikedPlayerMoveEvent(self, mx,my, player, tileType, newTile)
-  for i = 1, table.getn(self.tileLoc),1 do
-    if mouse_inbounds(self, mx,my,i) then
-      --print(tileType:getLabel(tileType))
-      Tile:removePlayer(tileType, player)
-      --print("Tile location that wants to be added: ",self.tileLoc[i]:getX(), self.tileLoc[i]:getY())
-      Tile:addPlayer(self, self.tileLoc[i], player, newTile)
+  function Tile:clikedEvent(self, mx,my)
+    for i = 1, table.getn(self.tileLoc),1 do
+      if mouse_inbounds(self, mx,my,i) then
+        print(self.label.. " panel was pressed" )
+      end
     end
+    return false
   end
-  return false
-end
+
+
 
 function Tile:setTileLoc(self, arrayNum, xLoc, yLoc)
   self.tileLoc[arrayNum] = Vector2:new(xLoc or 0, yLoc or 0)
@@ -90,14 +80,8 @@ function Tile:getPosY(self, loc)
   --return self.pos:getY()
 end
 
-function Tile:addPlayer(self, tileLoc, player, tileType)
-  self.tileMap:addPlayerOnTile(self.tileMap, tileLoc, player)
-  player:setTileLoc(player, tileLoc, tileType)
-end
-
-function Tile:removePlayer(tile, player)
-  print(player:getLabel(player), tile:getLabel(tile) ,player:getTileLoc(player):getX(), player:getTileLoc(player):getY())
-  tile:getTileMap(tile):removePlayerOnTile(tile:getTileMap(tile),player:getTileLoc(player), player )
+function Tile:addPlayer(self, tileLoc, player)
+    self.tileMap:addPlayerOnTile(self.tileMap, tileLoc, player)
 end
 
 function Tile:drawPlayerOnTile(self)
@@ -129,11 +113,7 @@ end
 ]]--
 
 function Tile:getLabel(self)
-  return self.label
-end
-
-function Tile:getTileMap(self)
-  return self.tileMap
+  return self.getLabel
 end
 
 return Tile
