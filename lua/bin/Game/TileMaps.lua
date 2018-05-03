@@ -61,8 +61,18 @@ function TileMaps:addPlayerOnTile(self, tileLoc, player)
 --  print(table.getn(self.key))
   if (table.getn(self.key) > 1) then
   for i = 1, table.getn(self.key), 1 do
+
+  
+
+    if (tileLoc:getX() == self.key[i]:getX()) then
+      if(tileLoc:getY() == self.key[i]:getY()) then
+
+        loc = i
+      end
+
     if (tileLoc == self.key[i]) then
       loc = i
+
     end
   end
 else
@@ -84,10 +94,15 @@ function TileMaps:removePlayerOnTile(self, tileLoc, player)
     end
   end
   for j = 1, table.getn(self.dataType[loc]), 1 do
-    if player.getLabel == self.dataType[loc][j].getLabel then
+    --print("Player label: ",player:getLabel(player), "Compare Label: ", )
+    if (player:getLabel(player) == self.dataType[loc][j]:getLabel(self.dataType[loc][j])) then
       locPlayer = j
     end
   end
+
+
+  print("location of Player: ", locPlayer)
+
   table.remove(self.dataType[loc], locPlayer)
 end
 
