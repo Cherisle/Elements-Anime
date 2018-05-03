@@ -63,11 +63,11 @@ function TileMaps:addPlayerOnTile(self, tileLoc, player)
   if (table.getn(self.key) > 1) then
   for i = 1, table.getn(self.key), 1 do
     print("")
-    print("Tile in the function", tileLoc:getX(), tileLoc:getY())
-    print(i, self.key[i]:getX(), self.key[i]:getY())
+    --print("Tile in the function", tileLoc:getX(), tileLoc:getY())
+  --  print(i, self.key[i]:getX(), self.key[i]:getY())
     if (tileLoc:getX() == self.key[i]:getX()) then
       if(tileLoc:getY() == self.key[i]:getY()) then
-        print("ASDASD")
+      --  print("ASDASD")
         loc = i
       end
     end
@@ -84,7 +84,7 @@ end
 end
 
 function TileMaps:removePlayerOnTile(self, tileLoc, player)
-  print("GOES THROUGH HERES")
+  --print("GOES THROUGH HERES")
   loc = 0
   locPlayer = 0
   if (table.getn(self.key) > 1) then
@@ -101,10 +101,15 @@ end
 
   print(table.getn(self.dataType[loc]))
   for j = 1, table.getn(self.dataType[loc]), 1 do
-    if player.getLabel == self.dataType[loc][j].getLabel then
+    --print("Player label: ",player:getLabel(player), "Compare Label: ", )
+    if (player:getLabel(player) == self.dataType[loc][j]:getLabel(self.dataType[loc][j])) then
       locPlayer = j
     end
   end
+
+
+  print("location of Player: ", locPlayer)
+
   table.remove(self.dataType[loc], locPlayer)
   self.numOfPlayers[loc] = self.numOfPlayers[loc] - 1
 end
