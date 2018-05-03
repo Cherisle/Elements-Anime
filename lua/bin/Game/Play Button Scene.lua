@@ -2,7 +2,6 @@ require "scenery"
 ui = require "loveui/ui"
 mainScript = require "main"
 local PlayerGUI = require "PlayerGUI"
-local Vector2 = require("lib/Vector2")
 local Player = require "Player"
 local Tile = require "Tile"
 local context = ui.context()
@@ -146,37 +145,37 @@ function s.load()
 				tileLocCounter[15] = tileLocCounter[15] + 1
 				Hom1:setTileLoc(Hom1, tileLocCounter[15],x,y)
 				Hom1:addToTileMaps(Hom1,x,y)
-				Hom1:addPlayer(Hom1, Vector2:new(x or 0, y or 0), PlayerGUIs[1], 4)
+				Hom1:addPlayer(Hom1, 1, PlayerGUIs[1])
 
 			elseif (identifier == Hom2:getImage(Hom2)) then
 				tileLocCounter[16] = tileLocCounter[16] + 1
 				Hom2:setTileLoc(Hom2, tileLocCounter[16],x,y)
 				Hom2:addToTileMaps(Hom2,x,y)
-				Hom2:addPlayer(Hom2, Vector2:new(x or 0, y or 0), PlayerGUIs[2], 5)
+				Hom2:addPlayer(Hom2, 1, PlayerGUIs[2])
 
 			elseif (identifier == Hom3:getImage(Hom3)) then
 				tileLocCounter[17] = tileLocCounter[17] + 1
 				Hom3:setTileLoc(Hom3, tileLocCounter[17],x,y)
 				Hom3:addToTileMaps(Hom3,x,y)
-				Hom3:addPlayer(Hom3, Vector2:new(x or 0, y or 0), PlayerGUIs[3], 6)
+				Hom3:addPlayer(Hom3, 1, PlayerGUIs[3])
 
 			elseif (identifier == Hom4:getImage(Hom4)) then
 				tileLocCounter[18] = tileLocCounter[18] + 1
 				Hom4:setTileLoc(Hom4, tileLocCounter[18],x,y)
 				Hom4:addToTileMaps(Hom4,x,y)
-				Hom4:addPlayer(Hom4, Vector2:new(x or 0, y or 0), PlayerGUIs[4], 7)
+				Hom4:addPlayer(Hom4, 1, PlayerGUIs[4])
 
 			elseif (identifier == Hom5:getImage(Hom5)) then
 				tileLocCounter[19] = tileLocCounter[19] + 1
 				Hom5:setTileLoc(Hom5, tileLocCounter[19],x,y)
 				Hom5:addToTileMaps(Hom5,x,y)
-				Hom5:addPlayer(Hom5, Vector2:new(x or 0, y or 0), PlayerGUIs[5], 8)
+				Hom5:addPlayer(Hom5, 1, PlayerGUIs[5])
 
 			elseif (identifier == Hom6:getImage(Hom6)) then
 				tileLocCounter[20] = tileLocCounter[20] + 1
 				Hom6:setTileLoc(Hom6, tileLocCounter[20],x,y)
 				Hom6:addToTileMaps(Hom6,x,y)
-				Hom6:addPlayer(Hom6, Vector2:new(x or 0, y or 0), PlayerGUIs[6], 9)
+				Hom6:addPlayer(Hom6, 1, PlayerGUIs[6])
 			end
 
 		end
@@ -252,34 +251,9 @@ function s.update(dt)
 	collectgarbage()
 end
 
-function tileType(t)
-	if (t == 1) then
-		return Nrml
-	elseif (t == 2) then
-		return DrwP
-	elseif (t == 3) then
-		return MoBo
-	elseif (t == 4) then
-		return Hom1
-	elseif (t == 5) then
-		return Hom2
-	elseif (t == 6) then
-		return Hom3
-	elseif (t == 7) then
-		return Hom4
-	elseif (t == 8) then
-		return Hom5
-	elseif (t == 9) then
-		return Hom6
-	end
-end
-
-choose = false
-playerNum = 0
 function love.mousepressed(x, y, button)
-
+	choose = false
 	if button == 1 then
-
 		Nrml:clikedEvent(Nrml, love.mouse.getX(), love.mouse.getY())
 		DrwP:clikedEvent(DrwP,love.mouse.getX(),love.mouse.getY())
 		MoBo:clikedEvent(MoBo,love.mouse.getX(),love.mouse.getY())
@@ -304,42 +278,20 @@ function love.mousepressed(x, y, button)
 		_G.counter = 2
 		scenery.load("MainMenu")
     end
-
-		if(choose == true) then
-			print(PlayerGUIs[playerNum]:getTileType(PlayerGUIs[playerNum]))
-			Nrml:clikedPlayerMoveEvent(Nrml,love.mouse.getX(),love.mouse.getY(),PlayerGUIs[playerNum], tileType(PlayerGUIs[playerNum]:getTileType(PlayerGUIs[playerNum])), 1)
-			DrwP:clikedPlayerMoveEvent(DrwP,love.mouse.getX(),love.mouse.getY(),PlayerGUIs[playerNum], tileType(PlayerGUIs[playerNum]:getTileType(PlayerGUIs[playerNum])), 2)
-			MoBo:clikedPlayerMoveEvent(MoBo,love.mouse.getX(),love.mouse.getY(),PlayerGUIs[playerNum], tileType(PlayerGUIs[playerNum]:getTileType(PlayerGUIs[playerNum])), 3)
-			Hom1:clikedPlayerMoveEvent(Hom1,love.mouse.getX(),love.mouse.getY(),PlayerGUIs[playerNum], tileType(PlayerGUIs[playerNum]:getTileType(PlayerGUIs[playerNum])), 4)
-			Hom2:clikedPlayerMoveEvent(Hom2,love.mouse.getX(),love.mouse.getY(),PlayerGUIs[playerNum], tileType(PlayerGUIs[playerNum]:getTileType(PlayerGUIs[playerNum])), 5)
-			Hom3:clikedPlayerMoveEvent(Hom3,love.mouse.getX(),love.mouse.getY(),PlayerGUIs[playerNum], tileType(PlayerGUIs[playerNum]:getTileType(PlayerGUIs[playerNum])), 6)
-			Hom4:clikedPlayerMoveEvent(Hom4,love.mouse.getX(),love.mouse.getY(),PlayerGUIs[playerNum], tileType(PlayerGUIs[playerNum]:getTileType(PlayerGUIs[playerNum])), 7)
-			Hom5:clikedPlayerMoveEvent(Hom5,love.mouse.getX(),love.mouse.getY(),PlayerGUIs[playerNum], tileType(PlayerGUIs[playerNum]:getTileType(PlayerGUIs[playerNum])), 8)
-			Hom6:clikedPlayerMoveEvent(Hom6,love.mouse.getX(),love.mouse.getY(),PlayerGUIs[playerNum], tileType(PlayerGUIs[playerNum]:getTileType(PlayerGUIs[playerNum])), 9)
-			choose = false
-			for i = 1,6,1 do
-				PlayerGUIs[i]:changeMoveColorBack(PlayerGUIs[i])
-			end
-		end
-
+end
 
 		for i = 1,6,1 do
 			PlayerGUIs[i]:addHP(PlayerGUIs[i])
 			PlayerGUIs[i]:subtractHP(PlayerGUIs[i])
 			PlayerGUIs[i]:addAP(PlayerGUIs[i])
 			PlayerGUIs[i]:subtractAP(PlayerGUIs[i])
-			if(PlayerGUIs[i]:moveEvent(PlayerGUIs[i]) == true) then
-				choose = true
-				playerNum = i
+			choose = PlayerGUIs[i]:moveEvent(PlayerGUIs[i])
 			end
-		  --print(choose)
-			end
-
-
 
 	else if button == 2 then
 		scenery.load("MainMenu")
+    	end
+		end
+
 	end
-end
-end
 end
