@@ -31,6 +31,8 @@ function s.load()
 	Nrml = Tile:new(love.graphics.newImage("Panels/General/Normal Panel.png"), true, "Nrml")
 	MoBo = Tile:new(love.graphics.newImage("Panels/General/Movement Boost Panel.png"), true, "MoBo")
 	DrwP = Tile:new(love.graphics.newImage("Panels/General/Draw Panel.png"), true, "DrwP")
+	ElmB = Tile:new(love.graphics.newImage("Panels/General/Elemental Boost Panel.png"), true, "ElmB")
+	EvnT = Tile:new(love.graphics.newImage("Panels/General/Event Tile.png"), true, "EvnT")
 	Hom1 = Tile:new(love.graphics.newImage("Panels/General/Home Panel 1 - Hom1.png"), true, "Hom1")
 	Hom2 = Tile:new(love.graphics.newImage("Panels/General/Home Panel 2 - Hom2.png"), true, "Hom2")
 	Hom3 = Tile:new(love.graphics.newImage("Panels/General/Home Panel 3 - Hom3.png"), true, "Hom3")
@@ -48,31 +50,43 @@ function s.load()
 	WWBL = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Water WaveBL.png"), false, "WWBL")
 	WWBR = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Water WaveBR.png"), false, "WWBR")
 	Fllr = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Filler Panel.png"), false, "Fllr")
+	BTop = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Bridge_Tile_Top.png"), false, "BTop")
+	BBot = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Bridge_Tile_Bottom.png"), false, "BBot")
+	WTop = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Top_Water.png"), false, "Wtop")
+	WBot = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Bottom_Water.png"), false, "WBot")
+	TrS1 = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Treed_Sand_1.png"), false, "TrS1")
+	TrS2 = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Treed_Sand_2.png"), false, "TrS2")
+	TrS3 = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Treed_Sand_3.png"), false, "TrS3")
+	TrS4 = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/Treed_Sand_4.png"), false, "TrS4")
+	TrN1 = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/TreeTile_1.png"), false, "TrN1")
+	TrN2 = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/TreeTile_2.png"), false, "TrN2")
+	TrN3 = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/TreeTile_3.png"), false, "TrN3")
+	TrN4 = Tile:new(love.graphics.newImage("Panels/Inactive/Map 1 - Theta's Paradise/TreeTile_4.png"), false, "TrN4")
 
 	TileW, TileH = 60,60
-	-- FIXED 
+	-- FIXED
 
 	TileTable =
 	{
-     { FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),Fllr:getImage(Fllr),DrwP:getImage(DrwP),Nrml:getImage(Nrml),Nrml:getImage(Nrml),Hom5:getImage(Hom5),Nrml:getImage(Nrml),Nrml:getImage(Nrml),Nrml:getImage(Nrml),Fllr:getImage(Fllr),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa) }, -- 1
-     { FuSa:getImage(FuSa),FuSa:getImage(FuSa),Fllr:getImage(Fllr),Nrml:getImage(Nrml),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),Nrml:getImage(Nrml),Fllr:getImage(Fllr),FuSa:getImage(FuSa),FuSa:getImage(FuSa) }, -- 2
-     { FuSa:getImage(FuSa),Fllr:getImage(Fllr),Nrml:getImage(Nrml),FuSa:getImage(FuSa),SULw:getImage(SULw),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),SURw:getImage(SURw),Fllr:getImage(Fllr),Nrml:getImage(Nrml),Fllr:getImage(Fllr),FuSa:getImage(FuSa) }, -- 3
-     { Fllr:getImage(Fllr),Nrml:getImage(Nrml),FuSa:getImage(FuSa),SULw:getImage(SULw),WWUL:getImage(WWUL),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),WWUR:getImage(WWUR),SURw:getImage(SURw),Fllr:getImage(Fllr),Nrml:getImage(Nrml),Fllr:getImage(Fllr) }, -- 4
-     { DrwP:getImage(DrwP),FuSa:getImage(FuSa),SULw:getImage(SULw),WWUL:getImage(WWUL),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),WWUR:getImage(WWUR),SURw:getImage(SURw),Fllr:getImage(Fllr),Nrml:getImage(Nrml) }, -- 5
-     { Hom4:getImage(Hom4),SULw:getImage(SULw),WWUL:getImage(WWUL),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),WWUR:getImage(WWUR),SURw:getImage(SURw),Nrml:getImage(Nrml) }, -- 6
-     { Nrml:getImage(Nrml),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Nrml:getImage(Nrml) }, -- 7
-     { Nrml:getImage(Nrml),DrwP:getImage(DrwP),Nrml:getImage(Nrml),Nrml:getImage(Nrml),Nrml:getImage(Nrml),Hom6:getImage(Hom6),MoBo:getImage(MoBo),Nrml:getImage(Nrml),MoBo:getImage(MoBo),Hom1:getImage(Hom1),Nrml:getImage(Nrml),Nrml:getImage(Nrml),Nrml:getImage(Nrml),DrwP:getImage(DrwP),Nrml:getImage(Nrml) }, -- 8
-     { Nrml:getImage(Nrml),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Fllr:getImage(Fllr),Hom2:getImage(Hom2) }, -- 9
-     { Nrml:getImage(Nrml),SBLw:getImage(SBLw),WWBL:getImage(WWBL),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),WWBR:getImage(WWBR),SBRw:getImage(SBRw),Nrml:getImage(Nrml) }, -- 10
-     { Nrml:getImage(Nrml),Fllr:getImage(Fllr),SBLw:getImage(SBLw),WWBL:getImage(WWBL),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),WWBR:getImage(WWBR),SBRw:getImage(SBRw),Fllr:getImage(Fllr),DrwP:getImage(DrwP) }, -- 11
-     { Fllr:getImage(Fllr),Nrml:getImage(Nrml),Fllr:getImage(Fllr),SBLw:getImage(SBLw),WWBL:getImage(WWBL),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),WWBR:getImage(WWBR),SBRw:getImage(SBRw),Fllr:getImage(Fllr),Nrml:getImage(Nrml),Fllr:getImage(Fllr) }, -- 12
-     { FuSa:getImage(FuSa),Fllr:getImage(Fllr),MoBo:getImage(MoBo),Fllr:getImage(Fllr),SBLw:getImage(SBLw),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),SBRw:getImage(SBRw),Fllr:getImage(Fllr),MoBo:getImage(MoBo),Fllr:getImage(Fllr),FuSa:getImage(FuSa) }, -- 13
-     { FuSa:getImage(FuSa),FuSa:getImage(FuSa),Fllr:getImage(Fllr),Nrml:getImage(Nrml),Fllr:getImage(Fllr),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),Fllr:getImage(Fllr),Nrml:getImage(Nrml),Fllr:getImage(Fllr),FuSa:getImage(FuSa),FuSa:getImage(FuSa) }, -- 14
-     { FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),Fllr:getImage(Fllr),Nrml:getImage(Nrml),DrwP:getImage(DrwP),Nrml:getImage(Nrml),Hom3:getImage(Hom3),DrwP:getImage(DrwP),Nrml:getImage(Nrml),Nrml:getImage(Nrml),Fllr:getImage(Fllr),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa) } -- 15
+     { FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),TrN3:getImage(TrN3),DrwP:getImage(DrwP),Nrml:getImage(Nrml),ElmB:getImage(ElmB),Hom5:getImage(Hom5),Nrml:getImage(Nrml),EvnT:getImage(EvnT),Nrml:getImage(Nrml),TrN2:getImage(TrN2),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa) }, -- 1
+     { FuSa:getImage(FuSa),FuSa:getImage(FuSa),TrN3:getImage(TrN3),Nrml:getImage(Nrml),TrS3:getImage(TrS3),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),TrS2:getImage(TrS2),Nrml:getImage(Nrml),TrN2:getImage(TrN2),FuSa:getImage(FuSa),FuSa:getImage(FuSa) }, -- 2
+		 { FuSa:getImage(FuSa),TrN3:getImage(TrN3),MoBo:getImage(MoBo),TrS3:getImage(TrS3),SULw:getImage(SULw),WTop:getImage(WTop),WTop:getImage(WTop),WTop:getImage(WTop),WTop:getImage(WTop),WTop:getImage(WTop),SURw:getImage(SURw),TrS2:getImage(TrS2),MoBo:getImage(MoBo),TrN2:getImage(TrN2),FuSa:getImage(FuSa) }, -- 3
+		 { TrN3:getImage(TrN3),Nrml:getImage(Nrml),TrS3:getImage(TrS3),SULw:getImage(SULw),WWUL:getImage(WWUL),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),WWUR:getImage(WWUR),SURw:getImage(SURw),TrS2:getImage(TrS2),Nrml:getImage(Nrml),TrN2:getImage(TrN2) }, -- 4
+     { DrwP:getImage(DrwP),TrS3:getImage(TrS3),SULw:getImage(SULw),WWUL:getImage(WWUL),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),WWUR:getImage(WWUR),SURw:getImage(SURw),TrS2:getImage(TrS2),Nrml:getImage(Nrml) }, -- 5
+     { EvnT:getImage(EvnT),SULw:getImage(SULw),WWUL:getImage(WWUL),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),WWUR:getImage(WWUR),SURw:getImage(SURw),ElmB:getImage(ElmB) }, -- 6
+		 { Hom4:getImage(Hom4),BTop:getImage(BTop),BTop:getImage(BTop),BTop:getImage(BTop),BTop:getImage(BTop),BTop:getImage(BTop),BTop:getImage(BTop),BTop:getImage(BTop),BTop:getImage(BTop),BTop:getImage(BTop),BTop:getImage(BTop),BTop:getImage(BTop),BTop:getImage(BTop),BTop:getImage(BTop),Nrml:getImage(Nrml) }, -- 7
+		 { Nrml:getImage(Nrml),DrwP:getImage(DrwP),Nrml:getImage(Nrml),EvnT:getImage(EvnT),Nrml:getImage(Nrml),Hom6:getImage(Hom6),MoBo:getImage(MoBo),ElmB:getImage(ElmB),MoBo:getImage(MoBo),Hom1:getImage(Hom1),Nrml:getImage(Nrml),EvnT:getImage(EvnT),Nrml:getImage(Nrml),DrwP:getImage(DrwP),EvnT:getImage(EvnT) }, -- 8
+		 { MoBo:getImage(MoBo),BBot:getImage(BBot),BBot:getImage(BBot),BBot:getImage(BBot),BBot:getImage(BBot),BBot:getImage(BBot),BBot:getImage(BBot),BBot:getImage(BBot),BBot:getImage(BBot),BBot:getImage(BBot),BBot:getImage(BBot),BBot:getImage(BBot),BBot:getImage(BBot),BBot:getImage(BBot),Hom2:getImage(Hom2) }, -- 9
+     { Nrml:getImage(Nrml),SBLw:getImage(SBLw),WWBL:getImage(WWBL),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),WWBR:getImage(WWBR),SBRw:getImage(SBRw),ElmB:getImage(ElmB) }, -- 10
+     { EvnT:getImage(EvnT),TrS4:getImage(TrS4),SBLw:getImage(SBLw),WWBL:getImage(WWBL),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),WWBR:getImage(WWBR),SBRw:getImage(SBRw),TrS1:getImage(TrS1),DrwP:getImage(DrwP) }, -- 11
+     { TrN4:getImage(TrN4),Nrml:getImage(Nrml),TrS4:getImage(TrS4),SBLw:getImage(SBLw),WWBL:getImage(WWBL),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),Wtrp:getImage(Wtrp),WWBR:getImage(WWBR),SBRw:getImage(SBRw),TrS1:getImage(TrS1),Nrml:getImage(Nrml),TrN1:getImage(TrN1) }, -- 12
+		 { FuSa:getImage(FuSa),TrN4:getImage(TrN4),MoBo:getImage(MoBo),TrS4:getImage(TrS4),SBLw:getImage(SBLw),WBot:getImage(WBot),WBot:getImage(WBot),WBot:getImage(WBot),WBot:getImage(WBot),WBot:getImage(WBot),SBRw:getImage(SBRw),TrS1:getImage(TrS1),MoBo:getImage(MoBo),TrN1:getImage(TrN1),FuSa:getImage(FuSa) }, -- 13
+     { FuSa:getImage(FuSa),FuSa:getImage(FuSa),TrN4:getImage(TrN4),Nrml:getImage(Nrml),TrS4:getImage(TrS4),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),TrS1:getImage(TrS1),Nrml:getImage(Nrml),TrN1:getImage(TrN1),FuSa:getImage(FuSa),FuSa:getImage(FuSa) }, -- 14
+     { FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa),TrN4:getImage(TrN4),ElmB:getImage(ElmB),DrwP:getImage(DrwP),Nrml:getImage(Nrml),Hom3:getImage(Hom3),DrwP:getImage(DrwP),Nrml:getImage(Nrml),EvnT:getImage(EvnT),TrN1:getImage(TrN1),FuSa:getImage(FuSa),FuSa:getImage(FuSa),FuSa:getImage(FuSa) } -- 15
 	}
 
-	tileLocCounter = {n = 20}
-	for i = 1, 20, 1 do
+	tileLocCounter = {n = 22}
+	for i = 1, 22, 1 do
 		tileLocCounter[i] = 0;
 	end
 
@@ -178,6 +192,17 @@ function s.load()
 				Hom6:setTileLoc(Hom6, tileLocCounter[20],x,y)
 				Hom6:addToTileMaps(Hom6,x,y)
 				Hom6:addPlayer(Hom6, Vector2:new(x or 0, y or 0), PlayerGUIs[6], 9)
+
+			elseif (identifier == ElmB:getImage(ElmB)) then
+				tileLocCounter[21] = tileLocCounter[21] + 1
+				ElmB:setTileLoc(ElmB, tileLocCounter[21],x,y)
+				ElmB:addToTileMaps(ElmB,x,y)
+
+			elseif (identifier == EvnT:getImage(EvnT)) then
+				tileLocCounter[22] = tileLocCounter[22] + 1
+				EvnT:setTileLoc(EvnT, tileLocCounter[22],x,y)
+				EvnT:addToTileMaps(EvnT,x,y)
+
 			end
 
 		end
@@ -229,6 +254,8 @@ function s.draw()
 	Hom4:drawPlayerOnTile(Hom4)
 	Hom5:drawPlayerOnTile(Hom5)
 	Hom6:drawPlayerOnTile(Hom6)
+	ElmB:drawPlayerOnTile(ElmB)
+	EvnT:drawPlayerOnTile(EvnT)
 
 
 
@@ -272,6 +299,10 @@ function tileType(t)
 		return Hom5
 	elseif (t == 9) then
 		return Hom6
+	elseif (t == 10) then
+		return ElmB
+	elseif (t == 11) then
+		return EvnT
 	end
 end
 
@@ -317,6 +348,8 @@ function love.mousepressed(x, y, button)
 			Hom4:clikedPlayerMoveEvent(Hom4,love.mouse.getX(),love.mouse.getY(),PlayerGUIs[playerNum], tileType(PlayerGUIs[playerNum]:getTileType(PlayerGUIs[playerNum])), 7)
 			Hom5:clikedPlayerMoveEvent(Hom5,love.mouse.getX(),love.mouse.getY(),PlayerGUIs[playerNum], tileType(PlayerGUIs[playerNum]:getTileType(PlayerGUIs[playerNum])), 8)
 			Hom6:clikedPlayerMoveEvent(Hom6,love.mouse.getX(),love.mouse.getY(),PlayerGUIs[playerNum], tileType(PlayerGUIs[playerNum]:getTileType(PlayerGUIs[playerNum])), 9)
+			ElmB:clikedPlayerMoveEvent(ElmB,love.mouse.getX(),love.mouse.getY(),PlayerGUIs[playerNum], tileType(PlayerGUIs[playerNum]:getTileType(PlayerGUIs[playerNum])), 10)
+			EvnT:clikedPlayerMoveEvent(EvnT,love.mouse.getX(),love.mouse.getY(),PlayerGUIs[playerNum], tileType(PlayerGUIs[playerNum]:getTileType(PlayerGUIs[playerNum])), 11)
 			choose = false
 			for i = 1,6,1 do
 				PlayerGUIs[i]:changeMoveColorBack(PlayerGUIs[i])
